@@ -1,0 +1,36 @@
+.topnav {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	overflow: hidden;
+	background-color: transparent;
+	box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.75);
+	border-radius: 0 0 8px 8px;
+	padding: 0 20px;
+}
+
+.topnav-right {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	justify-items: center;
+	align-items: center;
+	width: 30%;
+}
+
+.topnav h1 span:nth-child(1) {
+	color: red;
+}
+
+.topnav h1 span:nth-child(2) {
+	color: blue;
+}
+
+.check-in-field {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	justify-items: center;
+	align-items: center;
+}
