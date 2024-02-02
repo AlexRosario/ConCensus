@@ -15,7 +15,7 @@
 	flex-direction: row;
 	justify-content: space-around;
 	justify-items: center;
-	align-items: center;
+	align-items: top;
 	width: 30%;
 }
 
@@ -33,4 +33,14 @@
 	justify-content: space-around;
 	justify-items: center;
 	align-items: center;
+}
+
+.topnav-register {
+	margin: 0 10px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.topnav-register span {
+	font-size: 10px;
 }
