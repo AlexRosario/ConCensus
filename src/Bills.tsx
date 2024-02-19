@@ -1,5 +1,5 @@
-import { useDisplayBills } from "../Providers/BillProvider";
-import { BillCard } from "./BillCard";
+import { useDisplayBills } from '../Providers/BillProvider';
+import { BillCard } from './BillCard';
 
 type HandleFunctions = {
 	handleDeleteBill: (billId: number) => void;
@@ -14,10 +14,10 @@ export const Bills = ({
 
 	return (
 		<>
-			{BillsToDisplay?.map((dog) => (
+			{billsToDisplay?.map((dog) => (
 				<BillCard
 					bill={bill}
-					key={dog.id}
+					key={bill.id}
 					isLoading={false}
 					onTrashIconClick={() => handleDeleteBill(bill.id)}
 					onThumbUpClick={() => handleApprovalClick(bill.id)}

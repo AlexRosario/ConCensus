@@ -1,46 +1,224 @@
-.topnav {
+.home {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	overflow: hidden;
+
+	padding: 0 20px;
+	height: 55vh;
+	background-color: rgb(241, 241, 241);
+}
+.home-left {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+.home-right {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	justify-items: center;
+	align-items: center;
+	width: 40%;
+	height: 50%;
+	border-radius: 8px;
+	box-shadow: 0 0 5px 1px rgba(223, 168, 168, 0.75);
+	background-color: whitesmoke;
+}
+
+.home h1 span:nth-child(1) {
+	color: red;
+}
+
+.home h1 span:nth-child(2) {
+	color: blue;
+}
+
+.home-right button {
+	width: 80%;
+	height: 20%;
+}
+
+.sign-in-field {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	justify-items: center;
+	align-items: center;
+	height: 50%;
+	width: 100%;
+}
+
+.sign-in-field .name {
+	width: 80%;
+	height: 20%;
+	border-radius: 3px;
+	border: transparent;
+	font-size: 1.2em;
+}
+.sign-in-field .password {
+	width: 80%;
+	height: 20%;
+	border-radius: 3px;
+	border: transparent;
+	font-size: 1.2em;
+}
+
+.home-register {
+	width: 100%;
+	height: 50%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: baseline;
+	justify-content: space-around;
+}
+.home-right .home-register a {
+	width: 100%;
+	height: 50vh;
+	text-align: center;
+}
+.home-right .home-register a button {
+	width: 80%;
+	height: 50%;
+	text-align: center;
+}
+
+.home-register hr {
+	width: 80%;
+	margin-bottom: 10%;
+}
+
+.home-register span {
+	font-size: 10px;
+}
+
+.contact {
+	background-color: blue;
+	height: 50vh;
+}
+.register-field {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin: 40% auto;
+
+	height: 50vh;
+	width: 60%;
+	border-radius: 8px;
+	background-color: rgb(229, 212, 212);
+}
+
+.register-field .input-wrap {
+	width: 80%;
+	height: 8%;
+	margin-bottom: 2%;
+	border-radius: 5px;
+	border: transparent;
+	font-size: 1.1em;
+}
+
+.register-field .input-wrap input {
+	width: 100%;
+	height: 75%;
+	border-radius: 5px;
+	border: transparent;
+}
+.register-field button {
+	width: 80%;
+	height: 10%;
+	border-radius: 8px;
+	border: transparent;
+	box-shadow: 0 0 5px 1px rgba(78, 76, 76, 0.75);
+	padding: 0.6em 1.2em;
+	font-size: 1em;
+	font-weight: 500;
+}
+
+.register-field .error-mesaage {
+	margin-top: 2%;
+	color: red;
+}
+
+.top-nav {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	overflow: hidden;
-	background-color: transparent;
-	box-shadow: -5px 5px 10px 0px rgba(0, 0, 0, 0.75);
-	border-radius: 0 0 8px 8px;
-	padding: 0 20px;
+	height: 10vh;
+	background-color: rgb(241, 241, 241);
 }
-
-.topnav-right {
+.reps {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	justify-items: center;
-	align-items: top;
-	width: 30%;
 }
-
-.topnav h1 span:nth-child(1) {
-	color: red;
-}
-
-.topnav h1 span:nth-child(2) {
-	color: blue;
-}
-
-.check-in-field {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	justify-items: center;
-	align-items: center;
-}
-
-.topnav-register {
-	margin: 0 10px;
+.rep-card {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-around;
 	align-items: center;
+	width: auto;
+	min-height: 20%;
+	border-radius: 8px;
+	padding: 5%;
+	box-shadow: 0 0 5px 1px rgba(223, 168, 168, 0.75);
 }
-.topnav-register span {
-	font-size: 10px;
+.bill-container {
+	max-width: 100vw;
+}
+.bill-container table {
+	text-align: center;
+	max-width: 100vw;
+	overflow: hidden;
+	border: 1px solid black;
+}
+
+.bill-container table,
+th,
+td {
+	border: 1px solid black;
+}
+.bill-container table th {
+	background-color: #313131;
+	color: white;
+}
+.bill-container table tr {
+	overflow-wrap: break-word;
+}
+.bill-container table td {
+	max-width: 33%;
+	text-overflow: ellipsis;
+}
+.bill-container table td div {
+	max-height: 120px;
+	overflow-y: scroll;
+	text-overflow: ellipsis;
+}
+.bill-container table td:checked {
+	scale: 1.2;
+	font-size: 12px;
+}
+.bill-container table td div:hover {
+	background-color: #35edbf;
+}
+.selectors {
+	display: flex;
+}
+
+.selector {
+	user-select: none;
+	border: 1px solid black;
+	border-radius: 400px;
+	padding: 4px 10px;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.selector.active {
+	background-color: black;
+	color: white;
 }

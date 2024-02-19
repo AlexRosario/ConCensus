@@ -5,12 +5,11 @@
       "name": "John Doe",
       "email": "blahmail"
     },
-    null,
-    null,
     {
-      "username": "ss",
-      "password": "ss",
-      "zipcode": "ss"
+      "username": "AlexRosario",
+      "password": "globular",
+      "zipcode": "11207",
+      "id": "77292373-b8de-426b-9dd9-9910c545f6fe"
     }
   ]
 }

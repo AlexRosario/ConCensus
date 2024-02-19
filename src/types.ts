@@ -1,7 +1,10 @@
 export type Bill = {
-title: string;
-
-
+	title: string;
 };
 
-export type 
+export type User = {
+	username: string;
+	email: string;
+	password: string;
+	zipcode: string;
+};
