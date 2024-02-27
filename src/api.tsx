@@ -32,7 +32,7 @@ export const Requests = {
 		});
 	},
 	getBillsBySubject: (subject: string, offset: number) => {
-		const url = `https://api.propublica.org/congress/v1/bills/subjects/${subject}.json?offset=${offset}`;
+		const url = `https://api.propublica.org/congress/v1/bills/search.json?offset=${offset}&&query="${subject}"`;
 		return fetch(url, {
 			method: 'GET',
 			headers: proPublicaHeader,

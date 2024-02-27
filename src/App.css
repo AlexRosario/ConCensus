@@ -222,3 +222,48 @@ td {
 	background-color: black;
 	color: white;
 }
+.subject {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin: 20px auto;
+}
+.subject-fields {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin: 20px auto;
+}
+.subject-fields input {
+	display: flex;
+	flex-direction: row;
+	margin: 0 20px;
+}
+.legislative-term {
+	display: flex;
+	flex-direction: row;
+	align-items: top;
+	margin-top: 20px;
+}
+.legislative-term #leg-term {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.legislative-term #leg-term input {
+	width: 100%;
+}
+.legislative-term #leg-term a {
+	font-size: 6px;
+}
+
+.subject-banner {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin: 20px auto;
+}
