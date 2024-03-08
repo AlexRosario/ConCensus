@@ -32,12 +32,35 @@ export const Requests = {
 		});
 	},
 	getBillsBySubject: (subject: string, offset: number) => {
-		const url = `https://api.propublica.org/congress/v1/bills/search.json?offset=${offset}&&query="${subject}"`;
-		return fetch(url, {
-			method: 'GET',
-			headers: proPublicaHeader,
-		}).then((response) => {
-			return response.json();
+		const url =
+			offset === 0
+				? `https://api.propublica.org/congress/v1/bills/search.json?query="${subject}"`
+				: `https://api.propublica.org/congress/v1/bills/search.json?query="${subject}"&&offset=${offset}`;
+
+		return new Promise((resolve, reject) => {
+			const attemptFetch = (retryCount: number, backoffDelay: number) => {
+				fetch(url, {
+					method: 'GET',
+					headers: proPublicaHeader,
+				})
+					.then((response) => {
+						if (!response.ok) throw new Error('Response not ok');
+						return response.json();
+					})
+					.then((data) => resolve(data))
+					.catch((error) => {
+						if (retryCount > 0) {
+							console.log(`Retrying... Attempts left: ${retryCount}`);
+							setTimeout(() => {
+								attemptFetch(retryCount - 1, backoffDelay * 2);
+							}, backoffDelay);
+						} else {
+							reject(error);
+						}
+					});
+			};
+
+			attemptFetch(3, 1000);
 		});
 	},
 

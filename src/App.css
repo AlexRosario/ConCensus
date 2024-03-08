@@ -169,6 +169,8 @@
 }
 .bill-container {
 	max-width: 100vw;
+	border: black 1px solid;
+	border-radius: 8px;
 }
 .bill-container table {
 	text-align: center;
@@ -224,14 +226,15 @@ td {
 }
 .subject {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
+
 	justify-content: space-around;
 	align-items: center;
 	margin: 20px auto;
 }
 .subject-fields {
 	display: flex;
-	flex-direction: column;
+
 	justify-content: space-around;
 	align-items: center;
 	margin: 20px auto;
@@ -241,6 +244,7 @@ td {
 	flex-direction: row;
 	margin: 0 20px;
 }
+
 .legislative-term {
 	display: flex;
 	flex-direction: row;
