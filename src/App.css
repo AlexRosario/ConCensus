@@ -48,6 +48,7 @@
 	align-items: center;
 	height: 50%;
 	width: 100%;
+	
 }
 
 .sign-in-field .name {
@@ -149,43 +150,114 @@
 	justify-content: space-between;
 	align-items: center;
 	height: 10vh;
-	background-color: rgb(241, 241, 241);
+	background-color: rgb(249, 247, 246);
+	color: var(--darkerblue);
 }
-.reps {
+
+.top-nav img{
+	width: 220px;
+	height: 220px;
+}
+
+.top-nav-user{
 	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
+	flex-direction: column;
+	justify-content:center;
+	align-items: left;
+	height: 10vh;
+	background-color: rgb(249, 247, 246);
 }
-.rep-card {
+
+.top-nav-user > *{
+	margin: 0;
+}
+.rep-container{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	padding-top: 2%;
+}
+
+.rep-section{
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	align-items: center;
-	width: auto;
-	min-height: 20%;
+	margin: 20px auto;
+}
+
+.rep-section h2{
+	color: var(--red);
+}
+.reps {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	
+
+}
+.rep-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: fit-content;
+	flex-grow: 1;
+	width: 15%;
+	max-width: 35%;
+	overflow:scroll;
+	height: 300px;
 	border-radius: 8px;
-	padding: 5%;
+	padding:0 2%;
+	margin:2%;
+	/*box-shadow: 0 0 5px 1px rgba(223, 168, 168, 0.75);*/
+	color: var(--darkerblue);
+	background-color: var(--offwhite);
+}
+.rep-card:hover{
 	box-shadow: 0 0 5px 1px rgba(223, 168, 168, 0.75);
+	transform: scale(1.3);
+
+}
+.rep-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: left;
+}
+
+.rep-card h3 {
+	color: var(--offblack);
+	font: Barlow, sans-serif;
+	font-size: var(--size-30);
+}
+
+.rep-card a{
+	color: var(--lightblue);
+
 }
 .bill-container {
 	max-width: 100vw;
 	border: black 1px solid;
 	border-radius: 8px;
+	margin-top: 100px;
 }
 .bill-container table {
 	text-align: center;
 	max-width: 100vw;
 	overflow: hidden;
 	border: 1px solid black;
+	background: rgb(154, 61, 24);
+	color: white;
 }
 
-.bill-container table,
-th,
-td {
+.bill-container th td {
 	border: 1px solid black;
+	bac
 }
 .bill-container table th {
-	background-color: #313131;
+	
 	color: white;
 }
 .bill-container table tr {
@@ -271,3 +343,6 @@ td {
 	align-items: center;
 	margin: 20px auto;
 }
+.font-face-Barlow {
+	font-family: "Barlow", sans-serif;
+  }

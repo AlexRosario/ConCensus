@@ -10,7 +10,14 @@ proPublicaHeader.append(
 	'nymVg76FlGKy3VBdYBy96ZAYgk56fhvoYf8mUKmi'
 );
 
-// Define your requests object
+proPublicaHeader.append('Content-Type', 'application/json');
+
+export const congressGovHeader = new Headers();
+congressGovHeader.append(
+	'X-API-Key',
+	'wbWdJxHyM4R2Vo9dCkI5jqdApMidOokgNWmHb8e3'
+);
+congressGovHeader.append('Content-Type', 'application/json');
 export const Requests = {
 	getCongressMembers: (zipcode: string) => {
 		const url = `/api/getall_mems.php?zip=${zipcode}&output=json`;
@@ -22,21 +29,17 @@ export const Requests = {
 			return response.json();
 		});
 	},
-	getBills: (i: string) => {
-		const url = `https://api.propublica.org/congress/v1/house/votes/recent.json?offset=${i}`;
+	getBillsRecent: (i: string) => {
+		const url = `https://api.congress.gov/v3/bill?api_key=[INSERT_KEY]`;
 		return fetch(url, {
 			method: 'GET',
-			headers: proPublicaHeader,
+			headers: congressGovHeader,
 		}).then((response) => {
 			return response.json();
 		});
 	},
 	getBillsBySubject: (subject: string, offset: number) => {
-		const url =
-			offset === 0
-				? `https://api.propublica.org/congress/v1/bills/search.json?query="${subject}"`
-				: `https://api.propublica.org/congress/v1/bills/search.json?query="${subject}"&&offset=${offset}`;
-
+		const url = `https://api.propublica.org/congress/v1/bills/search.json?query=${subject}&&offset=${offset}`;
 		return new Promise((resolve, reject) => {
 			const attemptFetch = (retryCount: number, backoffDelay: number) => {
 				fetch(url, {
@@ -45,9 +48,21 @@ export const Requests = {
 				})
 					.then((response) => {
 						if (!response.ok) throw new Error('Response not ok');
-						return response.json();
+						console.log('Response received:', response);
+						return response.text();
 					})
-					.then((data) => resolve(data))
+					.then((text) => {
+						try {
+							console.log('Text received:');
+							return JSON.parse(text); // Attempt to parse the text as JSON
+						} catch (error) {
+							// Throw if JSON parsing fails
+							throw new Error('Failed to parse JSON');
+						}
+					})
+					.then((data) => {
+						resolve(data);
+					})
 					.catch((error) => {
 						if (retryCount > 0) {
 							console.log(`Retrying... Attempts left: ${retryCount}`);
@@ -60,10 +75,42 @@ export const Requests = {
 					});
 			};
 
-			attemptFetch(3, 1000);
+			attemptFetch(3, 2000);
 		});
 	},
-
+	getBillById: (billId: string) => {
+		const url = `https://api.propublica.org/congress/v1/{congress}/bills/{bill-id}.json`;
+		return fetch(url, {
+			method: 'GET',
+			headers: proPublicaHeader,
+		}).then((response) => {
+			return response.json();
+		});
+	},
+	getVotesByDate: (date: string, chamber: string) => {
+		const url = `https://api.propublica.org/congress/v1/${chamber}/votes/${date}.json`; //roll call number, session number, congress, and chamber. use house passage date plus minus 1 to 2 days
+		return fetch(url, {
+			method: 'GET',
+			headers: proPublicaHeader,
+		}).then((response) => {
+			return response.json();
+		});
+	},
+	getRollCallVotes: (
+		congress: string,
+		chamber: string,
+		session: string,
+		rollCallNumber: string
+	) => {
+		const url = `https://api.propublica.org/congress/v1/${congress}/${chamber}/sessions/${session}/votes/${rollCallNumber}.json`;
+		return fetch(url, {
+			method: 'GET',
+			headers: proPublicaHeader,
+		}).then((response) => {
+			console.log('RollCall received:', response);
+			return response.json();
+		});
+	},
 	register: (username: string, password: string, zipcode: string) => {
 		const url = 'http://localhost:3000/users';
 
@@ -74,6 +121,7 @@ export const Requests = {
 				username: username,
 				password: password,
 				zipcode: zipcode,
+				voteLog: [],
 			}),
 		})
 			.then((response) => {
@@ -96,6 +144,21 @@ export const Requests = {
 		return fetch(url, {
 			method: 'GET',
 			headers: myHeaders,
+		})
+			.then((response) => {
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+				return response.json();
+			})
+			.catch((error) => console.error('Fetch error:', error));
+	},
+	updateVoteLog: (vote) => {
+		const url = 'http://localhost:3000/voteLogs';
+		return fetch(url, {
+			method: 'PATCH',
+			headers: myHeaders,
+			body: JSON.stringify({ voteLog: vote }),
 		})
 			.then((response) => {
 				if (!response.ok) {

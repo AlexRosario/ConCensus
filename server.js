@@ -19,6 +19,22 @@ app.use(
 		},
 	})
 );
+app.use(
+	'/publica',
+	createProxyMiddleware({
+		target: 'https://api.propublica.org',
+		changeOrigin: true,
+		pathRewrite: (path, req) => {
+			const subject = new URLSearchParams(req.url).get('subject');
+			const offset = new URLSearchParams(req.url).get('offset');
+			return `/congress/v1/bills/search.json?query="${subject}"&&offset=${offset}`;
+		},
+
+		onProxyRes: (proxyRes, req, res) => {
+			res.header('Access-Control-Allow-Origin', '*');
+		},
+	})
+);
 app.get('/users', (req, res) => {
 	if (fs.existsSync('db.json')) {
 		const fileData = fs.readFileSync('db.json', 'utf8');
