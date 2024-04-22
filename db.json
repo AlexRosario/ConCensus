@@ -10,6 +10,652 @@
       "password": "globular",
       "zipcode": "11207",
       "id": "77292373-b8de-426b-9dd9-9910c545f6fe"
+    },
+    {
+      "username": "Gorgeous",
+      "password": "fink",
+      "zipcode": "11207",
+      "id": "ba20f608-1959-4ffb-a73e-d59c8d6f9952"
+    },
+    {
+      "username": "we",
+      "password": "w",
+      "zipcode": "11207",
+      "id": "ea624824-f263-4f12-944f-6e2fc9a4cedd"
+    },
+    {
+      "username": "al",
+      "password": "a",
+      "zipcode": "11207",
+      "id": "649c54f6-54b1-4c2e-89bf-992d18fae942"
+    },
+    {
+      "username": "wolf",
+      "password": "rosarioalexander3@gmail.com",
+      "zipcode": "w",
+      "id": "21572f87-82dd-4bf8-8a3e-a6af02b83bd7"
+    },
+    {
+      "username": "bo",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "b",
+      "zipcode": "11207",
+      "id": "1caf0021-b9ba-4862-aa54-d036c227eb81"
+    },
+    {
+      "username": "ws",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "w",
+      "zipcode": "11207",
+      "id": "b9ff7a7a-b4d5-4e63-a6f4-5f6b27e62cb4",
+      "vote_log": []
+    },
+    {
+      "username": "dog",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "gg",
+      "zipcode": "11207",
+      "id": "2e263009-678f-4e87-a3e3-cd61c9353507",
+      "vote_log": []
+    },
+    {
+      "username": "sd",
+      "email": "Swiftorg@aol.com",
+      "password": "s",
+      "zipcode": "11207",
+      "id": "6f53045a-37cf-43ef-8424-56b73a34aa4b",
+      "vote_log": []
+    },
+    {
+      "username": "sd",
+      "email": "Swiftorg@aol.com",
+      "password": "s",
+      "zipcode": "11207",
+      "id": "b839b422-dda2-4b12-8216-31314470fc95",
+      "vote_log": []
+    },
+    {
+      "username": "ak",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "a",
+      "zipcode": "11207",
+      "id": "e588b577-7ea4-4640-b7a6-c6911dc99261",
+      "vote_log": []
+    },
+    {
+      "username": "ak",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "a",
+      "zipcode": "11207",
+      "id": "0b363728-ff38-4bf5-a3e0-50b2d6a0007a",
+      "vote_log": []
+    },
+    {
+      "username": "ak",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "a",
+      "zipcode": "11207",
+      "id": "5e613106-4921-42a2-bc0b-f15f4cf0e9f7",
+      "vote_log": []
+    },
+    {
+      "username": "barf",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "ff",
+      "zipcode": "11207",
+      "id": "cbb6c09f-e982-49b9-82e6-0859bcf75e6e",
+      "vote_log": []
+    },
+    {
+      "username": "barf",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "ff",
+      "zipcode": "11207",
+      "id": "d86ab834-1773-491a-b0b8-b6cffae0d37a",
+      "vote_log": []
+    },
+    {
+      "username": "vj",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "v",
+      "zipcode": "11207",
+      "id": "3afabda9-ad37-44c2-ac52-0395ca543033",
+      "vote_log": []
+    },
+    {
+      "username": "nom",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "n",
+      "zipcode": "11207",
+      "id": "5408c462-516d-477c-80a6-28e4e2fc21c4",
+      "vote_log": []
+    },
+    {
+      "username": "jj",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "j",
+      "zipcode": "11207",
+      "id": "bc1dd298-4002-47e4-92de-5184480366c9",
+      "vote_log": {
+        "H.CON.RES.100": {
+          "RepVotes": {
+            "Nydia M. Velázquez": "No"
+          }
+        },
+        "H.R.2882": {
+          "RepVotes": {
+            "Charles E. Schumer": "Yes",
+            "Kirsten E. Gillibrand": "Yes"
+          }
+        },
+        "H.R.1023": {
+          "RepVotes": {
+            "Charles E. Schumer": "Yes",
+            "Kirsten E. Gillibrand": "Yes"
+          }
+        },
+        "H.R.7023": {
+          "RepVotes": {
+            "Nydia M. Velázquez": "No"
+          }
+        },
+        "H.CON.RES.86": {
+          "RepVotes": {
+            "Charles E. Schumer": "Yes",
+            "Kirsten E. Gillibrand": "Yes",
+            "Nydia M. Velázquez": "No"
+          }
+        },
+        "H.R.1836": {
+          "RepVotes": {
+            "Nydia M. Velázquez": "Yes"
+          }
+        },
+        "H.RES.1102": {
+          "RepVotes": {
+            "Nydia Vel�zquez": "No",
+            "Hakeem Jeffries": "Yes"
+          }
+        },
+        "H.R.7900": {
+          "RepVotes": {
+            "Nydia M. Velázquez": "Yes"
+          }
+        },
+        "S.J.RES.62": {
+          "RepVotes": {
+            "Charles E. Schumer": "Yes",
+            "Kirsten E. Gillibrand": "Yes",
+            "Nydia M. Velázquez": "No"
+          }
+        },
+        "H.R.6655": {
+          "RepVotes": {
+            "Charles E. Schumer": "No",
+            "Kirsten E. Gillibrand": "No",
+            "Nydia M. Velázquez": "Yes"
+          }
+        },
+        "S.2051": {
+          "RepVotes": {
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Yes"
+          }
+        },
+        "H.R.6443": {
+          "RepVotes": {
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "H.R.1246": {
+          "RepVotes": {
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "H.RES.1126": {
+          "RepVotes": {
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "H.R.3865": {
+          "RepVotes": {
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "H.R.3250": {
+          "RepVotes": {
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "H.R.6233": {
+          "RepVotes": {
+            "[object Object]": "yea",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "H.R.6492": {
+          "RepVotes": {
+            "jj": "nay",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "S.4093": {
+          "RepVotes": {
+            "jj": "",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "H.R.7820": {
+          "RepVotes": {
+            "jj": "",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "S.3698": {
+          "RepVotes": {
+            "jj": "yea",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "H.R.7888": {
+          "RepVotes": {
+            "jj": "yea",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "H.R.2560": {
+          "RepVotes": {
+            "jj": "yea",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Yes"
+          }
+        },
+        "H.R.6245": {
+          "RepVotes": {
+            "jj": "yea",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Yes"
+          }
+        },
+        "H.R.6323": {
+          "RepVotes": {
+            "jj": "nay",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "No"
+          }
+        },
+        "H.R.5179": {
+          "RepVotes": {
+            "jj": "yea",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
+          }
+        },
+        "H.R.6015": {
+          "RepVotes": {
+            "jj": "nay",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Yes"
+          }
+        },
+        "S.382": {
+          "RepVotes": {
+            "jj": "yea",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Yes"
+          }
+        }
+      }
+    },
+    {
+      "username": "fa",
+      "email": "Swiftorg@aol.com",
+      "password": "fa",
+      "zipcode": "10009",
+      "id": "df2aca97-248c-4ab6-8587-019dadcff891",
+      "vote_log": {}
+    },
+    {
+      "username": "po",
+      "email": "Swiftorg@aol.com",
+      "password": "po",
+      "zipcode": "10009",
+      "id": "ca5940e9-90b3-470b-9933-2279fa655524",
+      "vote_log": {}
+    },
+    {
+      "username": "gh",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "gh",
+      "zipcode": "10009",
+      "id": "2e8c5d79-5a03-46d1-ad5a-2ae82291f37b",
+      "vote_log": {}
+    },
+    {
+      "username": "hj",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "hj",
+      "zipcode": "10002",
+      "id": "bdc06626-1fa9-4816-9b7c-de8477fd7af2",
+      "vote_log": {}
+    },
+    {
+      "username": "hd",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "hd",
+      "zipcode": "10009",
+      "id": "888d70d6-f875-4d3b-9fe5-3ab67c5cae58",
+      "vote_log": {}
+    },
+    {
+      "username": "sss",
+      "email": "Swiftorg@aol.com",
+      "password": "sss",
+      "zipcode": "10009",
+      "id": "4ee18c90-5de3-4387-a3ca-1aeca7873fd3",
+      "vote_log": {}
+    },
+    {
+      "username": "hm",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "hk",
+      "zipcode": "10009",
+      "representatives": [
+        {
+          "bioguideId": "S000148",
+          "depiction": {
+            "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+            "imageUrl": "https://www.congress.gov/img/member/s000148_200.jpg"
+          },
+          "name": "Charles E. Schumer",
+          "partyName": "Democratic",
+          "state": "New York",
+          "terms": {
+            "item": [
+              {
+                "chamber": "House of Representatives",
+                "endYear": 1999,
+                "startYear": 1981
+              },
+              {
+                "chamber": "Senate",
+                "startYear": 1999
+              }
+            ]
+          },
+          "updateDate": "2024-03-10T12:42:23Z",
+          "url": "https://api.congress.gov/v3/member/S000148?format=json",
+          "address": [
+            {
+              "line1": "322 Hart Senate Office Building",
+              "city": "Washington",
+              "state": "DC",
+              "zip": "20510"
+            }
+          ],
+          "party": "Democratic Party",
+          "phones": [
+            "(202) 224-6542"
+          ],
+          "urls": [
+            "https://www.schumer.senate.gov/",
+            "https://en.wikipedia.org/wiki/Chuck_Schumer"
+          ],
+          "photoUrl": "http://bioguide.congress.gov/bioguide/photo/S/S000148.jpg",
+          "channels": [
+            {
+              "type": "Facebook",
+              "id": "senschumer"
+            },
+            {
+              "type": "Twitter",
+              "id": "SenSchumer"
+            }
+          ]
+        },
+        {
+          "bioguideId": "G000555",
+          "depiction": {
+            "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+            "imageUrl": "https://www.congress.gov/img/member/g000555_200.jpg"
+          },
+          "name": "Kirsten E. Gillibrand",
+          "partyName": "Democratic",
+          "state": "New York",
+          "terms": {
+            "item": [
+              {
+                "chamber": "House of Representatives",
+                "endYear": 2009,
+                "startYear": 2007
+              },
+              {
+                "chamber": "Senate",
+                "startYear": 2009
+              }
+            ]
+          },
+          "updateDate": "2024-03-10T12:42:17Z",
+          "url": "https://api.congress.gov/v3/member/G000555?format=json",
+          "address": [
+            {
+              "line1": "478 Russell Senate Office Building",
+              "city": "Washington",
+              "state": "DC",
+              "zip": "20510"
+            }
+          ],
+          "party": "Democratic Party",
+          "phones": [
+            "(202) 224-4451"
+          ],
+          "urls": [
+            "https://www.gillibrand.senate.gov/",
+            "https://en.wikipedia.org/wiki/Kirsten_Gillibrand"
+          ],
+          "photoUrl": "http://bioguide.congress.gov/bioguide/photo/G/G000555.jpg",
+          "channels": [
+            {
+              "type": "Facebook",
+              "id": "KirstenGillibrand"
+            },
+            {
+              "type": "Twitter",
+              "id": "SenGillibrand"
+            }
+          ]
+        }
+      ],
+      "id": "ef7c97f7-740e-4499-9366-a36bf66a9b4d",
+      "vote_log": {}
+    },
+    {
+      "username": "orp",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "orp",
+      "zipcode": "10002",
+      "representatives": [
+        {
+          "bioguideId": "S000148",
+          "depiction": {
+            "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+            "imageUrl": "https://www.congress.gov/img/member/s000148_200.jpg"
+          },
+          "name": "Charles E. Schumer",
+          "partyName": "Democratic",
+          "state": "New York",
+          "terms": {
+            "item": [
+              {
+                "chamber": "House of Representatives",
+                "endYear": 1999,
+                "startYear": 1981
+              },
+              {
+                "chamber": "Senate",
+                "startYear": 1999
+              }
+            ]
+          },
+          "updateDate": "2024-03-10T12:42:23Z",
+          "url": "https://api.congress.gov/v3/member/S000148?format=json",
+          "address": [
+            {
+              "line1": "322 Hart Senate Office Building",
+              "city": "Washington",
+              "state": "DC",
+              "zip": "20510"
+            }
+          ],
+          "party": "Democratic Party",
+          "phones": [
+            "(202) 224-6542"
+          ],
+          "urls": [
+            "https://www.schumer.senate.gov/",
+            "https://en.wikipedia.org/wiki/Chuck_Schumer"
+          ],
+          "photoUrl": "http://bioguide.congress.gov/bioguide/photo/S/S000148.jpg",
+          "channels": [
+            {
+              "type": "Facebook",
+              "id": "senschumer"
+            },
+            {
+              "type": "Twitter",
+              "id": "SenSchumer"
+            }
+          ]
+        },
+        {
+          "bioguideId": "G000555",
+          "depiction": {
+            "attribution": "<a href=\"http://www.senate.gov/artandhistory/history/common/generic/Photo_Collection_of_the_Senate_Historical_Office.htm\">Courtesy U.S. Senate Historical Office</a>",
+            "imageUrl": "https://www.congress.gov/img/member/g000555_200.jpg"
+          },
+          "name": "Kirsten E. Gillibrand",
+          "partyName": "Democratic",
+          "state": "New York",
+          "terms": {
+            "item": [
+              {
+                "chamber": "House of Representatives",
+                "endYear": 2009,
+                "startYear": 2007
+              },
+              {
+                "chamber": "Senate",
+                "startYear": 2009
+              }
+            ]
+          },
+          "updateDate": "2024-03-10T12:42:17Z",
+          "url": "https://api.congress.gov/v3/member/G000555?format=json",
+          "address": [
+            {
+              "line1": "478 Russell Senate Office Building",
+              "city": "Washington",
+              "state": "DC",
+              "zip": "20510"
+            }
+          ],
+          "party": "Democratic Party",
+          "phones": [
+            "(202) 224-4451"
+          ],
+          "urls": [
+            "https://www.gillibrand.senate.gov/",
+            "https://en.wikipedia.org/wiki/Kirsten_Gillibrand"
+          ],
+          "photoUrl": "http://bioguide.congress.gov/bioguide/photo/G/G000555.jpg",
+          "channels": [
+            {
+              "type": "Facebook",
+              "id": "KirstenGillibrand"
+            },
+            {
+              "type": "Twitter",
+              "id": "SenGillibrand"
+            }
+          ]
+        },
+        {
+          "name": "Daniel Goldman",
+          "address": [
+            {
+              "line1": "245 Cannon House Office Building",
+              "city": "Washington",
+              "state": "DC",
+              "zip": "20515"
+            }
+          ],
+          "party": "Democratic Party",
+          "phones": [
+            "(202) 225-7944"
+          ],
+          "urls": [
+            "https://goldman.house.gov/",
+            "https://en.wikipedia.org/wiki/Dan_Goldman_%28politician%29"
+          ],
+          "channels": [
+            {
+              "type": "Facebook",
+              "id": "RepDanGoldman"
+            },
+            {
+              "type": "Twitter",
+              "id": "danielsgoldman"
+            }
+          ]
+        }
+      ],
+      "id": "33e8cb2c-3fce-4d22-b732-699600df45dc",
+      "vote_log": {
+        "S.382": {
+          "RepVotes": {
+            "orp": "nay",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Yes"
+          }
+        },
+        "H.R.6015": {
+          "RepVotes": {
+            "orp": "yea",
+            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
+            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "Nydia M. Velázquez": "Yes"
+          }
+        }
+      }
     }
   ]
 }

@@ -7,6 +7,13 @@ import { ErrorMessage } from './Utils/errorMesssages';
 import { isEmailValid, isZipcodeValid, isNameValid } from './Utils/validations';
 import { User } from './types';
 import { useNavigate } from 'react-router-dom';
+import { useDisplayMember } from './Providers/MemberProvder';
+
+type YourDataType = {
+	name: string;
+	office: string;
+	officials: CongressMember[];
+};
 
 export function RegisterInput({
 	labelText,
@@ -29,20 +36,75 @@ export const Register = () => {
 	const { username, email, password, zipcode } = user;
 	const [confirm, setConfirm] = useState('');
 	const [userNameExists, setUserNameExists] = useState(false);
-	const [zipCodeExists, setZipCodeExists] = useState(true);
+
 	const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 
 	const [takenName, setTakenName] = useState('');
+	const { congressMembers, setCongressMembers, setSenators, setHouseReps } =
+		useDisplayMember();
 	const doesUserExist = async (uname: string) =>
 		await Requests.getAllUsers().then((users) =>
 			users.some((user: User) => user.username === uname)
 		);
-	const doesZipcodeExist = async (zip: string) => {
-		const zipCode = await Requests.getCongressMembers(zip);
-		if (zipCode.error) {
-			setZipCodeExists(false);
+
+	let congressDataGoogle: YourDataType[] = [];
+	let congressDataCongressGov: YourDataType[] = [];
+	const mergedObjectArray: YourDataType[] = [];
+
+	const getMemberBios = async () => {
+		congressDataGoogle = await Requests.getCongressMembers(zipcode); // Google civic api call
+
+		let offset = 0; //Congresss.gov api call only allows for 20 members per call, so need to loop through until all members are fetched
+		do {
+			const response = await Requests.getCongressMembersBioIds(offset);
+			const newCongressRecord = response.members;
+
+			congressDataCongressGov = [
+				...congressDataCongressGov,
+				...newCongressRecord,
+			];
+
+			if (newCongressRecord.length === 0) break;
+			offset += 20;
+		} while (congressDataCongressGov.length < 555);
+
+		return { congressDataGoogle, congressDataCongressGov };
+	};
+	const normalizeName = (name: string) => {
+		let nameParts = name.replace(',', '').split(' ');
+		const firstName = nameParts.length > 2 ? nameParts[1] : '';
+		const adjustedFirstName =
+			firstName[0] === ' ' ? firstName.slice(1) : firstName;
+
+		return `${adjustedFirstName} ${nameParts[nameParts.length - 1]} ${
+			nameParts[0]
+		}`;
+	};
+
+	const mergeMemberBioObjects = (member: YourDataType) => {
+		const memberName = member.name;
+		const memberObject2: YourDataType = congressDataCongressGov.find(
+			(member) => {
+				if (
+					normalizeName(member.name)
+						.toLowerCase()
+						.includes(memberName.toLowerCase())
+				) {
+					return member;
+				}
+			}
+		);
+
+		if (memberObject2) {
+			const mergedMember = { ...memberObject2, ...member };
+			console.log('Merged Member:', mergedMember);
+			mergedObjectArray.push(mergedMember);
+		} else {
+			mergedObjectArray.push(member);
+			console.log('unmergedMember:', member);
 		}
-		setZipCodeExists(true);
+		console.log('Merged Object Array:', mergedObjectArray);
+		return mergedObjectArray;
 	};
 
 	const nameErrorMessage = 'Name is Invalid';
@@ -56,24 +118,57 @@ export const Register = () => {
 		setIsFormSubmitted(true);
 		const userExists = await doesUserExist(username);
 		setUserNameExists(userExists);
-		await doesZipcodeExist(zipcode);
+		getMemberBios()
+			.then((data) => {
+				console.log('Data2 received:', data);
+				data.congressDataGoogle.officials.forEach((member) => {
+					mergeMemberBioObjects(member);
+				}),
+					setCongressMembers(
+						mergedObjectArray.filter(
+							(member) =>
+								member.urls[0].includes('.house.gov') ||
+								member.urls[0].includes('.senate.gov')
+						)
+					),
+					setHouseReps(
+						mergedObjectArray.filter((member: CongressMember[]) =>
+							member.urls[0].includes('.house.gov')
+						)
+					),
+					setSenators(
+						mergedObjectArray.filter((member: CongressMember[]) =>
+							member.urls[0].includes('.senate.gov')
+						)
+					);
+			})
+			.catch((error) => {
+				console.error('Fetch error:', error.message); // Display the error message
+				if (error.response) {
+					// Check if a response exists
+					console.error('Response status:', error.response.status);
+					console.error('Response text:', error.response.statusText);
+				}
+			});
 		if (
 			!isNameValid(username) ||
 			!isEmailValid(email) ||
 			!isZipcodeValid(zipcode) ||
 			userNameExists ||
-			!zipCodeExists
+			congressMembers.length === 0
 		) {
 			setTakenName(username);
 			return;
 		}
-		Requests.register(username, password, zipcode)
+
+		Requests.register(username, email, password, zipcode, congressMembers)
 			.then(() => {
 				setUser({
 					username: '',
 					email: '',
 					password: '',
 					zipcode: '',
+					representatives: [],
 				});
 
 				setIsFormSubmitted(false);
@@ -164,7 +259,7 @@ export const Register = () => {
 				{isFormSubmitted && (
 					<ErrorMessage
 						message={zipcodeErrorMessage}
-						show={!isZipcodeValid(zipcode) || zipCodeExists}
+						show={!isZipcodeValid(zipcode) || congressMembers.length === 0}
 					/>
 				)}
 

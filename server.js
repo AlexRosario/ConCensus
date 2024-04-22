@@ -20,6 +20,32 @@ app.use(
 	})
 );
 app.use(
+	'/googleCivic',
+	createProxyMiddleware({
+		target: 'https://www.googleapis.com',
+		changeOrigin: true,
+		pathRewrite: (path, req) => {
+			const address = new URLSearchParams(req.url).get('address');
+
+			return `/civicinfo/v2/representatives/?address=${address}`;
+		},
+		onProxyRes: (proxyRes, req, res) => {
+			res.header('Access-Control-Allow-Origin', '*');
+		},
+	})
+);
+app.use(
+	'/congress',
+	createProxyMiddleware({
+		target: 'https://api.congress.gov/v3/member',
+		changeOrigin: true,
+
+		onProxyRes: (proxyRes, req, res) => {
+			res.header('Access-Control-Allow-Origin', '*');
+		},
+	})
+);
+app.use(
 	'/publica',
 	createProxyMiddleware({
 		target: 'https://api.propublica.org',
@@ -48,7 +74,7 @@ app.get('/users', (req, res) => {
 app.post('/users', (req, res) => {
 	let id = uuid();
 	try {
-		const { username, password, zipcode } = req.body;
+		const { username, email, password, zipcode, representatives } = req.body;
 		console.log('Request received:', req.body);
 		let db = { users: [] };
 
@@ -57,7 +83,15 @@ app.post('/users', (req, res) => {
 			db = JSON.parse(fileData);
 		}
 
-		db.users.push({ username, password, zipcode, id });
+		db.users.push({
+			username,
+			email,
+			password,
+			zipcode,
+			representatives,
+			id,
+			vote_log: {},
+		});
 		fs.writeFileSync('db.json', JSON.stringify(db, null, 2));
 
 		res
@@ -69,6 +103,35 @@ app.post('/users', (req, res) => {
 	}
 });
 
+app.patch('/users/:userId', (req, res) => {
+	const { userId } = req.params;
+	const readDB = () => {
+		const dbData = fs.readFileSync('db.json', 'utf8');
+		return JSON.parse(dbData);
+	};
+
+	// Helper function to write to the database file
+	const writeDB = (data) => {
+		fs.writeFileSync('db.json', JSON.stringify(data, null, 2), 'utf8');
+	};
+	const db = readDB();
+
+	const userIndex = db.users.findIndex((user) => user.id === userId);
+	if (userIndex === -1) {
+		return res.status(404).send('User not found');
+	}
+
+	// Update user's vote log with new data
+	const updatedVoteLog = {
+		...db.users[userIndex].vote_log,
+		...req.body.vote_log,
+	};
+	db.users[userIndex].vote_log = updatedVoteLog;
+
+	writeDB(db);
+
+	res.send('Vote log updated successfully');
+});
 // Start the Express server
 const port = 3000;
 app.listen(port, () => {

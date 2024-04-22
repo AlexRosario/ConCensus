@@ -37,4 +37,5 @@ npm i express
 npm i --save @fortawesome/fontawesome-svg-core
 npm i --save @fortawesome/free-solid-svg-icons
 npm i --save @fortawesome/react-fontawesome@latest
+npm install react-responsive-carousel
 You'll need to also run in terminal: node server.js
