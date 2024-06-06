@@ -3,6 +3,11 @@ import { createProxyMiddleware } from 'http-proxy-middleware';
 import fs from 'fs';
 import cors from 'cors';
 import { v4 as uuid } from 'uuid';
+export const proPublicaHeader = new Headers();
+proPublicaHeader.append(
+	'X-API-Key',
+	'nymVg76FlGKy3VBdYBy96ZAYgk56fhvoYf8mUKmi'
+);
 
 const app = express();
 app.use(express.json());
@@ -45,22 +50,7 @@ app.use(
 		},
 	})
 );
-app.use(
-	'/publica',
-	createProxyMiddleware({
-		target: 'https://api.propublica.org',
-		changeOrigin: true,
-		pathRewrite: (path, req) => {
-			const subject = new URLSearchParams(req.url).get('subject');
-			const offset = new URLSearchParams(req.url).get('offset');
-			return `/congress/v1/bills/search.json?query="${subject}"&&offset=${offset}`;
-		},
 
-		onProxyRes: (proxyRes, req, res) => {
-			res.header('Access-Control-Allow-Origin', '*');
-		},
-	})
-);
 app.get('/users', (req, res) => {
 	if (fs.existsSync('db.json')) {
 		const fileData = fs.readFileSync('db.json', 'utf8');
@@ -74,7 +64,7 @@ app.get('/users', (req, res) => {
 app.post('/users', (req, res) => {
 	let id = uuid();
 	try {
-		const { username, email, password, zipcode, representatives } = req.body;
+		const { username, email, password, address, representatives } = req.body;
 		console.log('Request received:', req.body);
 		let db = { users: [] };
 
@@ -84,14 +74,47 @@ app.post('/users', (req, res) => {
 		}
 
 		db.users.push({
+			id,
 			username,
 			email,
 			password,
-			zipcode,
+			address,
 			representatives,
-			id,
 			vote_log: {},
 		});
+		fs.writeFileSync('db.json', JSON.stringify(db, null, 2));
+
+		res
+			.status(200)
+			.json({ status: 'success', message: 'Registration successful' });
+	} catch (error) {
+		console.error(error); // Log the error for debugging
+		res.status(500).json({ status: 'error', message: 'Server error' });
+	}
+});
+app.get('/representatives', (req, res) => {
+	if (fs.existsSync('db.json')) {
+		const fileData = fs.readFileSync('db.json', 'utf8');
+		const db = JSON.parse(fileData);
+		res.json(db.representatives);
+	} else {
+		res.status(404).json({ status: 'error', message: 'No reps found' });
+	}
+});
+
+app.post('/representatives', (req, res) => {
+	let id = uuid();
+	try {
+		const representative = req.body;
+		console.log('Request received:', req.body);
+		let db = { representatives: [] };
+
+		if (fs.existsSync('db.json')) {
+			const fileData = fs.readFileSync('db.json', 'utf8');
+			db = JSON.parse(fileData);
+		}
+
+		db.representatives.push({ ...representative, id });
 		fs.writeFileSync('db.json', JSON.stringify(db, null, 2));
 
 		res

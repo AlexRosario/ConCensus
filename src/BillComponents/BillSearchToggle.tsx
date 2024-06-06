@@ -76,7 +76,6 @@ export const BillSearch = () => {
 					)}
 					{searchType === 'legislative-term' && (
 						<div className='legislative-term'>
-							<label htmlFor='leg-term'>Type legislative term: &ensp; </label>
 							<div id='leg-term'>
 								<input
 									type='text'
@@ -121,7 +120,7 @@ export const BillSearch = () => {
 				)}
 				<button
 					onClick={() => {
-						setSubjectOffset((subjectOffset) => subjectOffset + 20);
+						setSubjectOffset((prevOffset: number) => prevOffset + 20);
 					}}>
 					Load More Bills
 					<FontAwesomeIcon icon={faArrowRight} />

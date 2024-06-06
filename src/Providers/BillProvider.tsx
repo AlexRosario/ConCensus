@@ -11,19 +11,19 @@ import { HouseBill } from '../types.ts';
 
 type TBillProvider = {
 	bills: HouseBill[];
-	setBills: (bills: HouseBill[]) => void; // Corrected parameter type from `string` to `HouseBill[]`
+	setBills: (bills: HouseBill[]) => void;
 	billSubject: string;
 	setBillSubject: (subject: string) => void;
 	isButtonClicked: boolean;
 	setIsButtonClicked: (isClicked: boolean) => void;
 	subjectOffset: number;
-	setSubjectOffset: (offset: number) => void;
+	setSubjectOffset: (offset: number | ((prevOffset: number) => number)) => void;
 	chamber: string;
 	setChamber: (chamber: string) => void;
 	prevChamberRef: React.MutableRefObject<string>;
 	prevSubjectRef: React.MutableRefObject<string>;
-	filterPassedBills: boolean; // Added missing property
-	setFilterPassedBills: (filterPassed: boolean) => void; // Added missing property
+	filterPassedBills: boolean;
+	setFilterPassedBills: (filterPassed: boolean) => void;
 };
 
 export const BillContext = createContext<TBillProvider>({

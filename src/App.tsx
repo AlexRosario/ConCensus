@@ -1,59 +1,27 @@
 import './App.css';
-import { Requests } from './api.tsx';
-import { useEffect, useState, useRef } from 'react';
 import { Header } from './HeaderComponent.tsx';
 
-import { useDisplayMember } from './Providers/MemberProvder.tsx';
+import { MemberProvider } from './Providers/MemberProvder.tsx';
 import { RepSection } from './RepComponents/RepSection.tsx';
-import { BillSearch } from './BillComponents/BillSearchToggle.tsx';
-import { BillHopper } from './BillComponents/BillHopper.tsx';
+import { BillSection } from './BillComponents/BillSection.tsx';
 import '@fortawesome/fontawesome-free/css/all.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { allPolicies } from './Utils/policy-terms';
-import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './fonts/BarlowCondensed-SemiBold.ttf';
-import { faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
-import { TbDashboard } from 'react-icons/tb';
-import { DiVim } from 'react-icons/di';
-
-interface HouseBill {
-	bill_id: string;
-	number: string;
-	active: boolean;
-	title: string;
-	summary: string;
-	latest_major_action: string;
-	latest_major_action_date: string;
-	congressdotgov_url: string;
-	house_passage: string;
-	senate_passage: string;
-	introduced_date: string;
-	vetoed: string;
-}
-
-interface Vote {
-	key: string;
-	vote: string;
-}
 function App() {
-	const { congressMembers, senators, houseReps } = useDisplayMember();
-	const userString = localStorage.getItem('user');
-	const user = userString ? JSON.parse(userString) : '';
+	const [screenSelect, setScreenSelect] = useState('reps');
 
 	return (
 		<>
-			<Header />
-			<RepSection />
+			<MemberProvider>
+				<Header
+					screenSelect={screenSelect}
+					setScreenSelect={setScreenSelect}
+				/>
 
-			<div className='bill-container'>
-				<BillSearch />
-
-				<BillHopper />
-			</div>
+				{screenSelect === 'reps' ? <RepSection /> : <BillSection />}
+			</MemberProvider>
 		</>
 	);
 }

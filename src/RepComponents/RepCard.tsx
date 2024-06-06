@@ -12,23 +12,52 @@ interface CongressMember {
 	phones: string[];
 	urls: string[];
 }
+
+type RepVotes = {
+	[key: string]: string;
+};
+
+type VoteLogEntry = {
+	RepVotes: RepVotes;
+};
+
 export const RepCard = ({ member }: { member: CongressMember }) => {
 	const user = JSON.parse(localStorage.getItem('user') ?? '');
 
-	const getMemberScoreData = () => {
-		const voteLog = Requests.getVoteLog(user).then((data) => {
-			return JSON.parse(data);
-		});
-		console.log('Vote Log:', voteLog);
-	};
-	useEffect(() => {
-		getMemberScoreData();
-	}, []);
+	const totalVotes = Object.values(user.vote_log).reduce(
+		(
+			total: { count: number; sameKnownVotes: number; withPartyVotes: number },
+			vote
+		) => {
+			const repVote = (vote as VoteLogEntry).RepVotes[member.name];
+			const userVote = (vote as VoteLogEntry).RepVotes[user.username];
+			console.log('repVote:', repVote);
+			console.log('userVote:', userVote);
+			if (repVote === 'Yes' || repVote === 'No' || repVote === 'Not Voting') {
+				total.count++;
+				repVote === userVote
+					? (total.sameKnownVotes += 1)
+					: (total.sameKnownVotes += 0);
+			} else {
+				total.withPartyVotes += 1;
+			}
+			return total;
+		},
+		{ count: 0, sameKnownVotes: 0, withPartyVotes: 0 }
+	);
+	console.log('totalVotes:', totalVotes);
+
+	const score =
+		totalVotes.count > 0
+			? ((totalVotes.sameKnownVotes / totalVotes.count) * 100).toFixed(2) + '%'
+			: 'No clear votes recorded';
+
 	return (
 		<div className='rep-card'>
 			<div className='rep-score'>
 				<h3 className='font-face-Barlow'>{member.name.toUpperCase()}</h3>
-				<div className='rep-district'>{member.district}</div>
+				<div>Known Score: {score}</div>
+				<div>Probable Score: </div>
 			</div>
 			<div className='rep-card-bottom'>
 				<img
@@ -36,10 +65,16 @@ export const RepCard = ({ member }: { member: CongressMember }) => {
 					alt=''
 				/>
 				<div>
-					<h4>{member.state}</h4>
-					<div>ID: {member.bioguideId}</div>
-					<div>{member.party}</div>
+					{member.bioguideId && <div>Bioguide-ID: {member.bioguideId}</div>}
+					{member.district && member.bioguideId ? (
+						<span className='rep-district'>
+							House Rep District {member.district}
+						</span>
+					) : member.bioguideId ? (
+						<span>Senator</span>
+					) : null}
 
+					<div>{member.party}</div>
 					<div>Phone: {member.phones}</div>
 					<div>
 						<span>

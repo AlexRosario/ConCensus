@@ -5,15 +5,17 @@ import toast from 'react-hot-toast';
 import { useAuthInfo } from './Providers/AuthProvider';
 import { ErrorMessage } from './Utils/errorMesssages';
 import { isEmailValid, isZipcodeValid, isNameValid } from './Utils/validations';
-import { User } from './types';
+import { User, CongressMember, ProPublicaMember } from './types';
 import { useNavigate } from 'react-router-dom';
-import { useDisplayMember } from './Providers/MemberProvder';
 
-type YourDataType = {
+// Import the 'CongressMember' type from the appropriate module
+
+type GoogleDataType = {
 	name: string;
 	office: string;
 	officials: CongressMember[];
 };
+type CongressDataType = CongressMember[];
 
 export function RegisterInput({
 	labelText,
@@ -33,45 +35,76 @@ export function RegisterInput({
 
 export const Register = () => {
 	const { user, setUser } = useAuthInfo(); //user setUser
-	const { username, email, password, zipcode } = user;
+	const { username, email, password, address, representatives } = user;
+	const { street, city, state, zipcode } = address;
 	const [confirm, setConfirm] = useState('');
 	const [userNameExists, setUserNameExists] = useState(false);
-
 	const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-
 	const [takenName, setTakenName] = useState('');
-	const { congressMembers, setCongressMembers, setSenators, setHouseReps } =
-		useDisplayMember();
+
 	const doesUserExist = async (uname: string) =>
 		await Requests.getAllUsers().then((users) =>
 			users.some((user: User) => user.username === uname)
 		);
 
-	let congressDataGoogle: YourDataType[] = [];
-	let congressDataCongressGov: YourDataType[] = [];
-	const mergedObjectArray: YourDataType[] = [];
+	let congressDataGoogle: GoogleDataType = {
+		name: '',
+		office: '',
+		officials: [],
+	};
+
+	let congressDataCongressGov: CongressDataType = [];
+	let congressDataProPublica: ProPublicaMember[] = [];
+
+	const nameErrorMessage = 'Name is Invalid';
+	const existsErrorMessage = `Username ${takenName} already exists`;
+	const emailErrorMessage = 'Email is Invalid';
+	const zipcodeErrorMessage = 'Zip code is Invalid';
+	const navigate = useNavigate();
 
 	const getMemberBios = async () => {
-		congressDataGoogle = await Requests.getCongressMembers(zipcode); // Google civic api call
+		congressDataGoogle = await Requests.getCongressMembers(
+			`${street} ${city} ${state} ${zipcode}`
+		); // Google civic api call
+		const congressDataProPublicaSenate =
+			await Requests.getCongressMembersProPublica('senate', '118');
+		console.log('congressDataProPublicaSenate:', congressDataProPublicaSenate);
+		const congressDataProPublicaHouse =
+			await Requests.getCongressMembersProPublica('house', '118');
+		console.log('congressDataProPublicaHouse:', congressDataProPublicaHouse);
+		congressDataProPublica = [
+			congressDataProPublicaHouse.results[0].members,
+			congressDataProPublicaSenate.results[0].members,
+		].flatMap((result) => result);
 
-		let offset = 0; //Congresss.gov api call only allows for 20 members per call, so need to loop through until all members are fetched
-		do {
+		//Congresss.gov api call only allows for 20 members per call, so need to loop through until all members are fetched
+		for (let offset = 0; congressDataCongressGov.length < 555; offset += 20) {
 			const response = await Requests.getCongressMembersBioIds(offset);
 			const newCongressRecord = response.members;
+
+			if (newCongressRecord.length === 0) break;
 
 			congressDataCongressGov = [
 				...congressDataCongressGov,
 				...newCongressRecord,
 			];
+		}
+		console.log(
+			'congressDataCongressGov:',
+			congressDataCongressGov,
+			congressDataProPublica
+		);
 
-			if (newCongressRecord.length === 0) break;
-			offset += 20;
-		} while (congressDataCongressGov.length < 555);
-
-		return { congressDataGoogle, congressDataCongressGov };
+		return {
+			congressDataGoogle,
+			congressDataCongressGov,
+			congressDataProPublica,
+		};
 	};
+
 	const normalizeName = (name: string) => {
-		let nameParts = name.replace(',', '').split(' ');
+		//Names are in separate formats in each of the data structures, so this function normalizes the name
+		const nameParts = name.replace(',', '').split(' ');
 		const firstName = nameParts.length > 2 ? nameParts[1] : '';
 		const adjustedFirstName =
 			firstName[0] === ' ' ? firstName.slice(1) : firstName;
@@ -81,67 +114,88 @@ export const Register = () => {
 		}`;
 	};
 
-	const mergeMemberBioObjects = (member: YourDataType) => {
+	const mergeMemberBioObjects = (member: CongressMember) => {
 		const memberName = member.name;
-		const memberObject2: YourDataType = congressDataCongressGov.find(
-			(member) => {
-				if (
-					normalizeName(member.name)
-						.toLowerCase()
-						.includes(memberName.toLowerCase())
-				) {
-					return member;
-				}
+		const memberObject1 = congressDataCongressGov.find((member) => {
+			if (
+				normalizeName(member.name)
+					.toLowerCase()
+					.includes(memberName.toLowerCase())
+			) {
+				return member;
+			}
+		});
+
+		const memberObject2 = congressDataProPublica.find(
+			(member: ProPublicaMember) => {
+				const fullName = `${member.first_name}${
+					member.middle_name ? ' ' + member.middle_name + ' ' : ' '
+				}${member.last_name}`.trim();
+				return fullName === memberName;
 			}
 		);
 
-		if (memberObject2) {
-			const mergedMember = { ...memberObject2, ...member };
-			console.log('Merged Member:', mergedMember);
-			mergedObjectArray.push(mergedMember);
-		} else {
-			mergedObjectArray.push(member);
-			console.log('unmergedMember:', member);
-		}
-		console.log('Merged Object Array:', mergedObjectArray);
-		return mergedObjectArray;
+		const mergedObjectArray: CongressMember[] = [];
+
+		const mergedMember: CongressMember = {
+			...memberObject1,
+			...memberObject2,
+			...member,
+		};
+		mergedObjectArray.push(mergedMember);
+
+		return mergedMember;
 	};
 
-	const nameErrorMessage = 'Name is Invalid';
-	const existsErrorMessage = `Username ${takenName} already exists`;
-	const emailErrorMessage = 'Email is Invalid';
-	const zipcodeErrorMessage = 'Zip code is Invalid';
-	const navigate = useNavigate();
+	async function addNewRepresentatives(reps: CongressMember[]) {
+		try {
+			const existingRepresentatives = await Requests.checkExistingReps();
+			const existingIds = new Set(
+				existingRepresentatives.map((rep: CongressMember) => rep.name)
+			);
+
+			for (const rep of reps) {
+				if (!existingIds.has(rep.name)) {
+					const postedRep = await Requests.postNewReps(rep);
+					console.log('Added:', postedRep);
+				}
+			}
+		} catch (error) {
+			console.error('Error:', error);
+		}
+	}
 
 	const handleRegister = async (e: React.FormEvent) => {
 		e.preventDefault();
 		setIsFormSubmitted(true);
 		const userExists = await doesUserExist(username);
+
 		setUserNameExists(userExists);
+
 		getMemberBios()
-			.then((data) => {
-				console.log('Data2 received:', data);
-				data.congressDataGoogle.officials.forEach((member) => {
-					mergeMemberBioObjects(member);
-				}),
-					setCongressMembers(
-						mergedObjectArray.filter(
-							(member) =>
-								member.urls[0].includes('.house.gov') ||
-								member.urls[0].includes('.senate.gov')
-						)
-					),
-					setHouseReps(
-						mergedObjectArray.filter((member: CongressMember[]) =>
-							member.urls[0].includes('.house.gov')
-						)
-					),
-					setSenators(
-						mergedObjectArray.filter((member: CongressMember[]) =>
-							member.urls[0].includes('.senate.gov')
-						)
+			.then(
+				(data: {
+					congressDataGoogle: GoogleDataType;
+					congressDataCongressGov: CongressDataType;
+					congressDataProPublica: ProPublicaMember[];
+				}) => {
+					console.log('Data2 received:', data);
+					const repNames: string[] = [];
+					const filteredRepresentatives: CongressMember[] = [];
+					data.congressDataGoogle.officials.forEach(
+						(member: CongressMember) => {
+							if (member.bioguideId) {
+								const mergedMember = mergeMemberBioObjects(member);
+								filteredRepresentatives.push(mergedMember);
+								repNames.push(mergedMember.name);
+							}
+						}
 					);
-			})
+
+					setUser({ ...user, representatives: repNames });
+					addNewRepresentatives(filteredRepresentatives);
+				}
+			)
 			.catch((error) => {
 				console.error('Fetch error:', error.message); // Display the error message
 				if (error.response) {
@@ -155,19 +209,24 @@ export const Register = () => {
 			!isEmailValid(email) ||
 			!isZipcodeValid(zipcode) ||
 			userNameExists ||
-			congressMembers.length === 0
+			representatives.length === 0
 		) {
 			setTakenName(username);
 			return;
 		}
 
-		Requests.register(username, email, password, zipcode, congressMembers)
+		Requests.register(username, email, password, address, representatives as [])
 			.then(() => {
 				setUser({
 					username: '',
 					email: '',
 					password: '',
-					zipcode: '',
+					address: {
+						street: '',
+						city: '',
+						state: '',
+						zipcode: '',
+					},
 					representatives: [],
 				});
 
@@ -248,21 +307,67 @@ export const Register = () => {
 						show={!!password && password !== confirm}
 					/>
 				)}
+				<h4>
+					Give us your address and we'll find your representatives for you.
+				</h4>
 				<RegisterInput
-					labelText={`Give us your zip code and we'll find your representatives for you`}
+					labelText={`Street Address`}
+					inputProps={{
+						placeholder: '123 Main St.',
+						onChange: (e) =>
+							setUser({
+								...user,
+								address: { ...user.address, street: e.target.value },
+							}),
+						value: user.address.street,
+					}}
+				/>
+
+				<RegisterInput
+					labelText={`City or Town`}
+					inputProps={{
+						placeholder: 'New York',
+						onChange: (e) =>
+							setUser({
+								...user,
+								address: {
+									...user.address,
+									city: e.target.value,
+								},
+							}),
+						value: city,
+					}}
+				/>
+				<RegisterInput
+					labelText={`State`}
+					inputProps={{
+						placeholder: 'NY',
+						onChange: (e) =>
+							setUser({
+								...user,
+								address: { ...user.address, state: e.target.value },
+							}),
+						value: state,
+					}}
+				/>
+				<RegisterInput
+					labelText={`Zipcode`}
 					inputProps={{
 						placeholder: '12345',
-						onChange: (e) => setUser({ ...user, zipcode: e.target.value }),
+						onChange: (e) =>
+							setUser({
+								...user,
+								address: { ...user.address, zipcode: e.target.value },
+							}),
 						value: zipcode,
 					}}
 				/>
 				{isFormSubmitted && (
 					<ErrorMessage
 						message={zipcodeErrorMessage}
-						show={!isZipcodeValid(zipcode) || congressMembers.length === 0}
+						show={!isZipcodeValid(zipcode)}
 					/>
 				)}
-
 				<button type='submit'>Submit</button>
 			</form>
 		</>

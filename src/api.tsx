@@ -1,4 +1,5 @@
 import toast from 'react-hot-toast';
+import { CongressMember } from './types';
 
 export const myHeaders = {
 	'Content-Type': 'application/json',
@@ -26,7 +27,12 @@ export const Requests = {
 		username: string,
 		email: string,
 		password: string,
-		zipcode: string,
+		address: {
+			street: string;
+			city: string;
+			state: string;
+			zipcode: string;
+		},
 		representatives: []
 	) => {
 		const url = 'http://localhost:3000/users';
@@ -38,7 +44,12 @@ export const Requests = {
 				username: username,
 				email: email,
 				password: password,
-				zipcode: zipcode,
+				address: {
+					street: address.street,
+					city: address.city,
+					state: address.state,
+					zipcode: address.zipcode,
+				},
 				representatives: representatives,
 			}),
 		})
@@ -56,6 +67,26 @@ export const Requests = {
 				toast.error('Not a valid zipcode');
 				error.message = 'Not a valid zipcode';
 			});
+	},
+	checkExistingReps: async () => {
+		const response = await fetch('http://localhost:3000/representatives');
+		if (!response.ok) {
+			throw new Error('Failed to fetch existing representatives');
+		}
+		return response.json();
+	},
+	postNewReps: async (rep: CongressMember) => {
+		const response = await fetch('http://localhost:3000/representatives', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(rep),
+		});
+		if (!response.ok) {
+			throw new Error('Failed to post new representative');
+		}
+		return response.json();
 	},
 
 	getCongressMembers: async (address: string) => {
@@ -90,25 +121,39 @@ export const Requests = {
 			console.error(error);
 			// Handle the error appropriately
 		}
-	} /*
-	addMemberToUser: async (user: null, member: null) => {
-		const response = await fetch(`http://localhost:3000/users/${user.id}`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({
-				members: [...user.members, member],
-			}),
-		});
+	},
 
-		if (response.ok) {
-			console.log('Member added successfully');
-		} else {
-			console.error('Failed to add member');
-		}
-	},*/,
-	addVoteToUser: async (user: null, allRepVotes: null, billId: string) => {
+	getCongressMembersProPublica: async (chamber: string, session: string) => {
+		const url = `https://api.propublica.org/congress/v1/${session}/${chamber}/members.json`;
+		return fetch(url, {
+			method: 'GET',
+			headers: proPublicaHeader,
+		})
+			.then((response) => {
+				return response.json();
+			})
+			.catch((error) => console.error('Fetch error:', error));
+	},
+	getCongressMembersDB: (userID: string) => {
+		const url = `http://localhost:3000/users`; // Assuming user has an 'id' property
+		return fetch(url, {
+			method: 'GET',
+			headers: myHeaders,
+		})
+			.then((response) => {
+				return response.json();
+			})
+			.then((users) => {
+				return users.find((user) => user.id === userID).representatives;
+			})
+			.catch((error) => console.error('Fetch error:', error));
+	},
+	addVoteToUser: async (
+		user: object,
+		allRepVotes: object,
+		billId: string,
+		partyVotes: object
+	) => {
 		const response = await fetch(`http://localhost:3000/users/${user.id}`, {
 			method: 'PATCH',
 			headers: {
@@ -116,10 +161,10 @@ export const Requests = {
 			},
 			body: JSON.stringify({
 				vote_log: {
-					...user.vote_log,
+					...(user as { vote_log: object }).vote_log,
 					[billId]: {
-						...user.vote_log[billId],
 						RepVotes: allRepVotes,
+						PartyVotes: partyVotes,
 					},
 				},
 			}),
@@ -133,7 +178,7 @@ export const Requests = {
 	},
 	getVoteLog: async (user: object) => {
 		try {
-			const response = await fetch(`/users/${user.id}/vote_log`, {
+			const response = await fetch(`/users/${user}/vote_log`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
@@ -235,7 +280,6 @@ export const Requests = {
 			method: 'GET',
 			headers: proPublicaHeader,
 		}).then((response) => {
-			console.log('RollCall received:', response);
 			return response.json();
 		});
 	},
@@ -254,6 +298,7 @@ export const Requests = {
 			})
 			.catch((error) => console.error('Fetch error:', error));
 	},
+
 	/*updateVoteLog: (vote) => {
 		const url = 'http://localhost:3000/voteLogs';
 		return fetch(url, {

@@ -3,7 +3,6 @@ import { RepCard } from './RepCard';
 
 interface CongressMember {
 	bioguideId: string;
-
 	photoUrl: string;
 	name: string;
 	party: string;

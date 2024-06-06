@@ -8,7 +8,6 @@ import { SignIn } from './Signin';
 import { Register } from './Register';
 import App from './App';
 import { Toaster } from 'react-hot-toast';
-import { MemberProvider } from './Providers/MemberProvder';
 import { BillProvider } from './Providers/BillProvider';
 
 const router = createBrowserRouter([
@@ -36,11 +35,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<Toaster />
 		<AuthProvider>
-			<MemberProvider>
-				<BillProvider>
-					<RouterProvider router={router} />
-				</BillProvider>
-			</MemberProvider>
+			<BillProvider>
+				<RouterProvider router={router} />
+			</BillProvider>
 		</AuthProvider>
 	</React.StrictMode>
 );

@@ -14,7 +14,12 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		username: '',
 		email: '',
 		password: '',
-		zipcode: '',
+		address: {
+			street: '',
+			city: '',
+			state: '',
+			zipcode: '',
+		},
 		representatives: [],
 	});
 

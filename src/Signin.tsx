@@ -14,11 +14,13 @@ export const SignIn = () => {
 		Requests.getAllUsers()
 			.then((users) =>
 				users.find((user: User) => {
-					return user.username === name && user.password === pWord;
+					return (
+						user.username?.toLowerCase() === name.toLowerCase() &&
+						user.password === pWord
+					); //pass user as prop
 				})
 			)
 			.then((user) => {
-				console.log('Data received:', user);
 				localStorage.setItem('user', JSON.stringify(user));
 				navigate('/App');
 			})
