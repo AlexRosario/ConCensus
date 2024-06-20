@@ -5,7 +5,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { allPolicies } from '../Utils/policy-terms';
 export const BillSearch = () => {
 	const {
-		bills,
+		billsToDisplay,
 		billSubject,
 		setBillSubject,
 		isButtonClicked,
@@ -60,7 +60,7 @@ export const BillSearch = () => {
 								setBillSubject(e.target.value);
 								setIsButtonClicked(true);
 
-								console.log('Bills:', bills);
+								console.log('Bills:', billsToDisplay);
 							}}>
 							<option value='default'>
 								Select a subject by suggested policy terms
@@ -108,7 +108,7 @@ export const BillSearch = () => {
 				</button>
 				{isButtonClicked ? (
 					<div>Loading...</div>
-				) : bills.length === 0 && billSubject !== '' ? (
+				) : billsToDisplay.length === 0 && billSubject !== '' ? (
 					<div>Couldn't fulfill request at this time</div>
 				) : billSubject === '' ? (
 					<h2>Most Recent Bills</h2>
@@ -132,7 +132,7 @@ export const BillSearch = () => {
 				<em>
 					<b>
 						Congressional Bills made into law this session:
-						{bills.filter((bill) => bill.enacted !== null).length}
+						{billsToDisplay.filter((bill) => bill.enacted !== null).length}
 					</b>
 				</em>
 			</div>

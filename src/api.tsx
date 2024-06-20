@@ -134,8 +134,8 @@ export const Requests = {
 			})
 			.catch((error) => console.error('Fetch error:', error));
 	},
-	getCongressMembersDB: (userID: string) => {
-		const url = `http://localhost:3000/users`; // Assuming user has an 'id' property
+	getCongressMembersDB: (reps: string[]) => {
+		const url = `http://localhost:3000/representatives`; // Assuming user has an 'id' property
 		return fetch(url, {
 			method: 'GET',
 			headers: myHeaders,
@@ -143,8 +143,10 @@ export const Requests = {
 			.then((response) => {
 				return response.json();
 			})
-			.then((users) => {
-				return users.find((user) => user.id === userID).representatives;
+			.then((members) => {
+				return members.filter((memberName: string) =>
+					reps.includes(memberName)
+				);
 			})
 			.catch((error) => console.error('Fetch error:', error));
 	},
@@ -176,9 +178,9 @@ export const Requests = {
 			console.error('Failed to update vote log');
 		}
 	},
-	getVoteLog: async (user: object) => {
+	getVoteLogByUserId: async (userId: string) => {
 		try {
-			const response = await fetch(`/users/${user}/vote_log`, {
+			const response = await fetch(`http://localhost:3000/users/${userId}`, {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json',
@@ -202,8 +204,8 @@ export const Requests = {
 		}
 	},
 
-	getBillsRecent: (i: string) => {
-		const url = `https://api.congress.gov/v3/bill?api_key=[INSERT_KEY]`;
+	getBillsRecent: () => {
+		const url = `https://api.congress.gov/v3/bill]`;
 		return fetch(url, {
 			method: 'GET',
 			headers: congressGovHeader,

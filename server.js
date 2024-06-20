@@ -56,8 +56,29 @@ app.get('/users', (req, res) => {
 		const fileData = fs.readFileSync('db.json', 'utf8');
 		const db = JSON.parse(fileData);
 		res.json(db.users);
+		console.log('users:', req.body);
 	} else {
 		res.status(404).json({ status: 'error', message: 'No users found' });
+	}
+});
+app.get('/users/:userId', (req, res) => {
+	const userId = req.params.userId;
+
+	// Check if the database file exists
+	if (fs.existsSync('db.json')) {
+		const fileData = fs.readFileSync('db.json', 'utf8');
+		const db = JSON.parse(fileData);
+		const user = db.users.find((u) => u.id === userId);
+
+		// Check if the user is found
+		if (user) {
+			console.log('actual:', user);
+			res.json(user.vote_log);
+		} else {
+			res.status(404).json({ status: 'error', message: 'User not found' });
+		}
+	} else {
+		res.status(404).json({ status: 'error', message: 'Database not found' });
 	}
 });
 

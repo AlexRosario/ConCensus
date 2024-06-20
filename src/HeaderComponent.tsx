@@ -1,20 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faChair, faLandmarkDome } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import { useScreenInfo } from './Providers/ScreenProvider';
 
-interface HeaderProps {
-	screenSelect: string;
-	setScreenSelect: (screen: string) => void;
-}
-
-export const Header = ({ screenSelect, setScreenSelect }: HeaderProps) => {
+export const Header = () => {
 	const userString = localStorage.getItem('user');
 	const user = userString ? JSON.parse(userString) : '';
 	const logOut = () => {
 		localStorage.removeItem('user');
 		window.location.href = '/';
 	};
+	const { screenSelect, setScreenSelect } = useScreenInfo();
 
 	return (
 		<div className='main-nav'>
@@ -34,7 +30,9 @@ export const Header = ({ screenSelect, setScreenSelect }: HeaderProps) => {
 				<FontAwesomeIcon
 					icon={faChair}
 					className={`screenSelect ${screenSelect === 'reps' ? 'active' : ''}`}
-					onClick={() => setScreenSelect('reps')}
+					onClick={() => {
+						setScreenSelect('reps');
+					}}
 				/>
 
 				<FontAwesomeIcon

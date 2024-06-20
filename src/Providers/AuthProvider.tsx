@@ -11,6 +11,7 @@ const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
 	const [user, setUser] = useState<User>({
+		id: '',
 		username: '',
 		email: '',
 		password: '',
@@ -21,6 +22,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 			zipcode: '',
 		},
 		representatives: [],
+		vote_log: {},
 	});
 
 	return (
@@ -29,4 +31,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 		</AuthContext.Provider>
 	);
 };
-export const useAuthInfo = () => useContext(AuthContext);
+export const useAuthInfo = () => {
+	return useContext(AuthContext);
+};

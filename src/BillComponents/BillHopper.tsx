@@ -17,7 +17,7 @@ interface MemberPositionRollCall {
 
 export const BillHopper = () => {
 	const { congressMembers, senators, houseReps } = useDisplayMember();
-	const { bills, filterPassedBills } = useDisplayBills();
+	const { billsToDisplay, filterPassedBills } = useDisplayBills();
 	const userString = localStorage.getItem('user');
 	const user = userString ? JSON.parse(userString) : '';
 	let relevantVotes: VoteRecord[] = [];
@@ -25,14 +25,12 @@ export const BillHopper = () => {
 	const [votes, setVotes] = useState<{ key: string; vote: string }[]>([]);
 
 	function getBillStatusMessage(bill: HouseBill) {
-		// Handle vetoed case first since it's a straightforward check
 		if (bill.vetoed !== null) return bill.vetoed;
 
 		const passedHouse = bill.house_passage !== null;
 		const passedSenate = bill.senate_passage !== null;
 		const lastVote = bill.last_vote !== null;
 
-		// Construct messages based on the bill status
 		if (passedHouse && passedSenate) {
 			return lastVote
 				? 'Passed House and Senate'
@@ -48,7 +46,7 @@ export const BillHopper = () => {
 		}
 
 		// Default case if none of the above conditions are met
-		return 'Waiting on member_positions from House and Senate';
+		return `Waiting on vote from House and Senate`;
 	}
 
 	const getRecentRollCallVotes = async (
@@ -101,142 +99,103 @@ export const BillHopper = () => {
 
 		return relevantVotes; // Return the array of relevant votes
 	};
-
-	const getMemberVote = async (bill: HouseBill, vote: string) => {
-		const introDate = bill.introduced_date;
-		const billNumber = bill.number;
-		const allRepVotes: { [key: string]: string } = {};
+	const getLatestVoteRecordAndBillStatus = async (
+		pertinentRollCalls: VoteRecord[],
+		bill: HouseBill
+	): Promise<MemberPositionRollCall> => {
 		const isBillEnacted = bill.enacted !== null;
 		const isBillVetoed = bill.vetoed !== null;
 		const isBillActive = bill.active;
-		const isSenateOrHouseBill =
-			bill.bill_type.slice(0, 1) === 'h' ? 'house' : 'senate';
+		const billOrigin = bill.bill_type.slice(0, 1) === 'h' ? 'House' : 'Senate';
+		const notBillOrigin =
+			bill.bill_type.slice(0, 1) === 'h' ? 'Senate' : 'House';
+		if (pertinentRollCalls.length > 0) {
+			console.log('Pertinent Roll Calls:', pertinentRollCalls[0]);
+		}
+		return {
+			member_positions:
+				pertinentRollCalls.length > 0 //Indicates that there is at least one roll call vote
+					? await Requests.getRollCallVotes(
+							pertinentRollCalls[0].congress,
+							'house',
+							pertinentRollCalls[0].session,
+							pertinentRollCalls[0].roll_call
+					  )
+					: bill.house_passage !== null && isBillEnacted //Indicates that the bill has passed the house and made into law without a roll call vote
+					? 'Made into law. House Voted yes with a floor vote and no individual vote record is available.'
+					: isBillActive &&
+					  (bill.senate_passage !== null || bill.house_passage !== null) &&
+					  (bill.house_passage === null || bill.senate_passage === null) //Indicates that bill was passed to House from Senate. House hasn't passed bill, but it remains under consideration and subject to further action, debate, and potential modification
+					? `${billOrigin} passed  bill to ${notBillOrigin}, it remains under consideration and subject to further action, debate, and potential modification.`
+					: isBillActive && isBillVetoed //Indicates that the bill was vetoed with message to Congress
+					? 'President vetoed bill with a message to Congress.'
+					: bill.house_passage !== null &&
+					  bill.senate_passage !== null &&
+					  !isBillEnacted &&
+					  !isBillVetoed
+					? bill.latest_major_action
+					: 'Way too much fuckery in Congress',
+			VoteRecord:
+				pertinentRollCalls.length !== 0
+					? pertinentRollCalls[0]
+					: bill.house_passage !== null
+					? 'No Roll Calls found, but bill was passed.'
+					: 'No Roll Calls yet.',
+		};
+	};
+
+	const getPartyVotes = (
+		pertinentVoteRecord: MemberPositionRollCall,
+		chamber: string
+	) => {
+		return typeof pertinentVoteRecord.VoteRecord !== 'string' &&
+			typeof pertinentVoteRecord.member_positions !== 'string'
+			? {
+					Democratic: {
+						...pertinentVoteRecord?.VoteRecord?.democratic,
+					},
+					Republican: {
+						...pertinentVoteRecord?.VoteRecord?.republican,
+					},
+					Independent: {
+						...pertinentVoteRecord?.VoteRecord?.independent,
+					},
+			  }
+			: `${chamber} : No Votes recorded yet.`;
+	};
+
+	const recordMembersVotes = async (bill: HouseBill, vote: string) => {
+		const introDate = bill.introduced_date;
+		const billNumber = bill.number;
+		const allRepVotes: { [key: string]: string } = {};
+
+		bill.bill_type.slice(0, 1) === 'h' ? 'house' : 'senate';
 		const username = user.username;
 
-		let partyVotes: { [key: string]: object } = {};
+		let partyVotes = {};
 
 		allRepVotes[username] = vote;
 
 		const relevantRollCalls = await getRecentRollCallVotes(
 			introDate,
 			'both',
-			billNumber
+			billNumber.toString()
 		);
-		const HouseRollCalls = relevantRollCalls.filter(
-			(vote) => vote.chamber === 'House'
+
+		const latestVoteRecordOfHouse = await getLatestVoteRecordAndBillStatus(
+			relevantRollCalls.filter((vote) => vote.chamber === 'House'),
+			bill
 		);
-		const SenateRollCalls = relevantRollCalls.filter(
-			(vote) => vote.chamber === 'Senate'
+
+		console.log('Roll Call Info:2', latestVoteRecordOfHouse);
+
+		const latestVoteRecordOfSenate = await getLatestVoteRecordAndBillStatus(
+			relevantRollCalls.filter((vote) => vote.chamber === 'Senate'),
+			bill
 		);
-		console.log('House Roll Calls:', HouseRollCalls);
-		console.log('Senate Roll Calls:', SenateRollCalls);
-
-		const lastHouseVoteRecord: MemberPositionRollCall = {
-			member_positions:
-				HouseRollCalls.length !== 0 //Indicates that there is at least one roll call vote
-					? await Requests.getRollCallVotes(
-							HouseRollCalls[0].congress,
-							'house',
-							HouseRollCalls[0].session,
-							HouseRollCalls[0].roll_call
-					  )
-					: bill.house_passage !== null && isBillEnacted //Indicates that the bill has passed the house and made into law without a roll call vote
-					? 'Made into law. House Voted yes with a floor vote and no individual vote record is available.'
-					: isBillActive &&
-					  isSenateOrHouseBill === 'senate' &&
-					  bill.senate_passage !== null &&
-					  bill.house_passage === null //Indicates that bill was passed to House from Senate. House hasn't passed bill, but it remains under consideration and subject to further action, debate, and potential modification
-					? 'Senate passed  bill to House, it remains under consideration and subject to further action, debate, and potential modification.'
-					: isBillActive &&
-					  isSenateOrHouseBill === 'house' &&
-					  bill.house_passage !== null &&
-					  bill.senate_passage === null
-					? 'House passed bill to Senate, it remains under consideration and subject to further action, debate, and potential modification.'
-					: isBillActive && isBillVetoed //Indicates that the bill was vetoed with message to Congress
-					? 'President vetoed bill with a message to Congress.'
-					: bill.house_passage !== null &&
-					  bill.senate_passage !== null &&
-					  !isBillEnacted &&
-					  !isBillVetoed
-					? bill.latest_major_action
-					: 'Way too much fuckery in Congress',
-			VoteRecord:
-				HouseRollCalls.length !== 0
-					? HouseRollCalls[0]
-					: bill.house_passage !== null
-					? 'No Roll Calls found, but bill was passed.'
-					: 'No Roll Calls yet.',
-		};
-
-		console.log('Roll Call Info:2', lastHouseVoteRecord);
-
-		const lastSenateVoteRecord: MemberPositionRollCall = {
-			member_positions:
-				SenateRollCalls.length !== 0
-					? await Requests.getRollCallVotes(
-							SenateRollCalls[0].congress,
-							'senate',
-							SenateRollCalls[0].session,
-							SenateRollCalls[0].roll_call
-					  )
-					: bill.senate_passage !== null && isBillEnacted //Indicates that the bill has passed the Senate and made into law without a roll call vote
-					? 'Made into law. Senate Voted yes with a floor vote and no individual vote record is available.'
-					: isBillActive &&
-					  isSenateOrHouseBill === 'house' &&
-					  bill.house_passage !== null &&
-					  bill.senate_passage === null //Indicates that bill was passed to Senate from House. Senate hasn't passed bill, but it remains under consideration and subject to further action, debate, and potential modification
-					? 'House passed bill to Senate, it remains under consideration and subject to further action, debate, and potential modification.'
-					: isBillActive &&
-					  isSenateOrHouseBill === 'senate' &&
-					  bill.senate_passage !== null &&
-					  bill.house_passage === null //Indicates that bill was passed to House from Senate. House hasn't passed bill, but it remains under consideration and subject to further action, debate, and potential modification
-					? 'Senate passed  bill to House, it remains under consideration and subject to further action, debate, and potential modification.'
-					: isBillActive && isBillVetoed //Indicates that the bill was vetoed with message to Congress
-					? 'President vetoed bill with a message to Congress.'
-					: bill.house_passage !== null &&
-					  bill.senate_passage !== null &&
-					  !isBillEnacted &&
-					  !isBillVetoed
-					? bill.latest_major_action
-					: 'Way too much fuckery in Congress',
-			VoteRecord:
-				SenateRollCalls.length !== 0
-					? SenateRollCalls[0]
-					: bill.senate_passage !== null
-					? 'No Roll Calls found, but bill was passed.'
-					: 'No Roll Calls yet.',
-		};
-		console.log('Roll Call Info1:', lastSenateVoteRecord);
-		const HouseVotes =
-			typeof lastHouseVoteRecord.VoteRecord !== 'string' &&
-			typeof lastHouseVoteRecord.member_positions !== 'string'
-				? {
-						Democratic: {
-							...lastHouseVoteRecord?.VoteRecord?.democratic,
-						},
-						Republican: {
-							...lastHouseVoteRecord?.VoteRecord?.republican,
-						},
-						Independent: {
-							...lastHouseVoteRecord?.VoteRecord?.independent,
-						},
-				  }
-				: { House: 'No Votes recorded yet.' };
-		const SenateVotes =
-			typeof lastSenateVoteRecord.VoteRecord !== 'string' &&
-			typeof lastSenateVoteRecord.member_positions !== 'string'
-				? {
-						Democratic: {
-							...lastSenateVoteRecord?.VoteRecord?.democratic,
-						},
-						Republican: {
-							...lastSenateVoteRecord?.VoteRecord?.republican,
-						},
-						Independent: {
-							...lastSenateVoteRecord?.VoteRecord?.independent,
-						},
-				  }
-				: { Senate: 'No Votes recorded yet.' };
+		console.log('Roll Call Info1:', latestVoteRecordOfSenate);
+		const HouseVotes = getPartyVotes(latestVoteRecordOfHouse, 'House');
+		const SenateVotes = getPartyVotes(latestVoteRecordOfSenate, 'Senate');
 
 		partyVotes = {
 			HouseVotes,
@@ -245,40 +204,28 @@ export const BillHopper = () => {
 
 		congressMembers.map((member) => {
 			let memberVote = '';
-			const memberShortenedFirstName = member.name.slice(0, 3); // using slice to get the first 3 letters of the first name as it is the most unique part of the name and names vary across datasets
-			const memberLastName = member.name.slice(
-				member.name.indexOf(' ') + 1,
-				member.name.length
-			);
+			const latestVoteRecordOfPertinentChamber =
+				member.office_title === 'U.S. Representative'
+					? latestVoteRecordOfHouse
+					: latestVoteRecordOfSenate;
+			console.log('roll call of:', latestVoteRecordOfPertinentChamber);
 
-			const isItHouseOrSenateRep = houseReps.some(
-				(rep) =>
-					rep.name.includes(memberShortenedFirstName) &&
-					rep.name.includes(memberLastName)
-			)
-				? 'houseRep'
-				: 'senateRep';
-
-			const lastPertinentChamberVoteRecord =
-				isItHouseOrSenateRep === 'houseRep'
-					? lastHouseVoteRecord
-					: lastSenateVoteRecord;
-			console.log('roll call of:', lastPertinentChamberVoteRecord);
-
-			if (typeof lastPertinentChamberVoteRecord.member_positions !== 'string') {
+			if (
+				typeof latestVoteRecordOfPertinentChamber.member_positions !== 'string'
+			) {
 				memberVote =
-					lastPertinentChamberVoteRecord.member_positions.results.votes.vote.positions.find(
+					latestVoteRecordOfPertinentChamber.member_positions.results.votes.vote.positions.find(
 						(position) => (position as MemberVote).name.includes(member.name)
 					)?.vote_position as string;
 			} else if (
-				typeof lastPertinentChamberVoteRecord.VoteRecord !== 'string'
+				typeof latestVoteRecordOfPertinentChamber.VoteRecord !== 'string'
 			) {
 				const partyVote =
 					member.partyName === 'Democratic'
-						? lastPertinentChamberVoteRecord.VoteRecord.democratic
+						? latestVoteRecordOfPertinentChamber.VoteRecord.democratic
 						: member.partyName === 'Republican'
-						? lastPertinentChamberVoteRecord.VoteRecord.republican
-						: lastPertinentChamberVoteRecord.VoteRecord.independent;
+						? latestVoteRecordOfPertinentChamber.VoteRecord.republican
+						: latestVoteRecordOfPertinentChamber.VoteRecord.independent;
 				const partyMajorityVoteCount = Math.max(
 					partyVote.yes,
 					partyVote.no,
@@ -295,10 +242,10 @@ export const BillHopper = () => {
 				memberVote = `${guessedMemberVote}, based on party position. No record of individual vote since it was a party line vote.`;
 			} else {
 				const partyMajorityVote =
-					(isItHouseOrSenateRep === 'houseRep' &&
+					(member.office_title === 'U.S. Representative' &&
 						bill.house_passage !== null &&
 						(member.votes_with_party_pct || 100) > 50) ||
-					(isItHouseOrSenateRep === 'senateRep' &&
+					(member.office_title === 'U.S. Senator' &&
 						bill.senate_passage !== null &&
 						(member.votes_with_party_pct || 100) > 50)
 						? 'Yes'
@@ -317,7 +264,7 @@ export const BillHopper = () => {
 				{ key: `${member.name}-${billNumber}`, vote: memberVote },
 			]);
 
-			console.log('Roll Call Info:', lastPertinentChamberVoteRecord);
+			console.log('Roll Call Info:', latestVoteRecordOfPertinentChamber);
 		});
 		Requests.addVoteToUser(user, allRepVotes, billNumber, partyVotes); //add after all congress members have been added and add party position to function
 	};
@@ -329,7 +276,7 @@ export const BillHopper = () => {
 				swipeable={true}
 				dynamicHeight={false}
 				renderIndicator={() => null}>
-				{bills
+				{billsToDisplay
 					.filter((bill: HouseBill) =>
 						filterPassedBills ? bill.enacted !== null : bill.enacted === null
 					)
@@ -376,45 +323,45 @@ export const BillHopper = () => {
 									  })
 									: 'No roll call votes available'}
 							</div>
-							<div className='member-votes'>
-								{congressMembers.map((member) => (
-									<>
-										<div>
-											<span>{member.name}: </span>
-											<span
-												key={`${member.name}-${bill.bill_id}`}
-												className='member-vote'>
-												{(bill.house_passage === null &&
-													bill.vetoed === null &&
-													houseReps.includes(member)) ||
-												(bill.senate_passage === null &&
-													bill.vetoed === null &&
-													senators.includes(member))
-													? 'Waiting on roll call'
-													: (bill.house_passage !== null ||
-															bill.senate_passage !== null) &&
-													  voted
-													? votes.find(
-															(obj) =>
-																obj.key === `${member.name}-${bill.number}`
-													  )?.vote
-													: "Vote to see member's vote"}
-											</span>
-										</div>
-									</>
-								))}
-							</div>
+
+							{congressMembers.map((member) => (
+								<div
+									className='member-votes'
+									key={`${bill.bill_id}-${member.name}`}>
+									<div>
+										<span>{member.name}: </span>
+										<span
+											key={`${member.name}-${bill.bill_id}`}
+											className='member-vote'>
+											{(bill.house_passage === null &&
+												bill.vetoed === null &&
+												houseReps.includes(member)) ||
+											(bill.senate_passage === null &&
+												bill.vetoed === null &&
+												senators.includes(member))
+												? 'Waiting on roll call'
+												: (bill.house_passage !== null ||
+														bill.senate_passage !== null) &&
+												  voted
+												? votes.find(
+														(obj) => obj.key === `${member.name}-${bill.number}`
+												  )?.vote
+												: "Vote to see member's vote"}
+										</span>
+									</div>
+								</div>
+							))}
 							<div className='vote-buttons'>
 								<button
 									onClick={() => {
-										getMemberVote(bill, 'Yes'); // Provide the missing argument
+										recordMembersVotes(bill, 'Yes'); // Provide the missing argument
 										setVoted(true);
 									}}>
 									<FontAwesomeIcon icon={faThumbsUp} />
 								</button>
 								<button
 									onClick={() => {
-										getMemberVote(bill, 'No'); // Provide the missing argument
+										recordMembersVotes(bill, 'No'); // Provide the missing argument
 										setVoted(true);
 									}}>
 									<FontAwesomeIcon icon={faThumbsDown} />

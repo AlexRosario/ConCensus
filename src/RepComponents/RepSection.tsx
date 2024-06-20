@@ -75,7 +75,11 @@ export const RepSection = () => {
 					key={'reps'}>
 					{members?.map((member: CongressMember) => (
 						<RepCard
-							member={member}
+							member={{
+								...member,
+								short_title: '',
+								id: '',
+							}}
 							key={member.bioguideId}
 						/>
 					))}

@@ -9,6 +9,9 @@ import { Register } from './Register';
 import App from './App';
 import { Toaster } from 'react-hot-toast';
 import { BillProvider } from './Providers/BillProvider';
+import { MemberProvider } from './Providers/MemberProvder';
+import { ScreenProvider } from './Providers/ScreenProvider';
+import ErrorBoundary from './Providers/ErrorProvider';
 
 const router = createBrowserRouter([
 	{
@@ -35,9 +38,15 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
 		<Toaster />
 		<AuthProvider>
-			<BillProvider>
-				<RouterProvider router={router} />
-			</BillProvider>
+			<ErrorBoundary>
+				<ScreenProvider>
+					<MemberProvider>
+						<BillProvider>
+							<RouterProvider router={router} />
+						</BillProvider>
+					</MemberProvider>
+				</ScreenProvider>
+			</ErrorBoundary>
 		</AuthProvider>
 	</React.StrictMode>
 );

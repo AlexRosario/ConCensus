@@ -1,47 +1,15 @@
 {
   "users": [
     {
-      "id": "e11ba1a0-14f6-40a5-94ea-4811823bddb4",
-      "username": "hum",
-      "email": "rosarioalexander3@gmail.com",
-      "password": "h",
+      "id": "b2c3102a-e80e-41cc-804d-913c4f56b654",
+      "username": "seawolf",
+      "email": "Swiftorg@aol.com",
+      "password": "sea",
       "address": {
-        "street": "67 cooper st. apt. 1",
+        "street": "19 wyckoff ave",
         "city": "BROOKLYN",
-        "state": "NY",
-        "zipcode": "11207"
-      },
-      "representatives": [
-        "Joseph R. Biden",
-        "Kamala D. Harris",
-        "Charles E. Schumer",
-        "Kirsten E. Gillibrand",
-        "Nydia M. Velázquez",
-        "Kathleen C. Hochul",
-        "Antonio Delgado",
-        "Thomas P. DiNapoli",
-        "Letitia James",
-        "Julia Salazar",
-        "Erik Martin Dilan",
-        "Antonio Reynoso",
-        "Eric Gonzalez",
-        "Eric L. Adams",
-        "Jumaane D. Williams",
-        "Brad Lander",
-        "Sandy Nurse"
-      ],
-      "vote_log": {}
-    },
-    {
-      "id": "ebca5d65-c9be-4bd5-85a7-ed6b6e58b3a8",
-      "username": "boog",
-      "email": "rosarioalexander3@gmail.com",
-      "password": "k",
-      "address": {
-        "street": "67 cooper st. apt. 1",
-        "city": "BROOKLYN",
-        "state": "NY",
-        "zipcode": "11207"
+        "state": "new york",
+        "zipcode": "11237"
       },
       "representatives": [
         "Joseph R. Biden",
@@ -54,19 +22,18 @@
         "Letitia James",
         "Thomas P. DiNapoli",
         "Julia Salazar",
-        "Erik Martin Dilan",
+        "Maritza Davila",
         "Antonio Reynoso",
         "Eric Gonzalez",
         "Eric L. Adams",
-        "Jumaane D. Williams",
         "Brad Lander",
-        "Sandy Nurse"
+        "Jumaane D. Williams"
       ],
       "vote_log": {}
     },
     {
-      "id": "400e5208-2f6b-477e-8f63-69e390c8efcc",
-      "username": "sko",
+      "id": "fe12a273-35ce-4c9a-a4b0-872266b8089e",
+      "username": "sss",
       "email": "rosarioalexander3@gmail.com",
       "password": "ss",
       "address": {
@@ -75,373 +42,197 @@
         "state": "NY",
         "zipcode": "11207"
       },
-      "representatives": [
-        "Joseph R. Biden",
-        "Kamala D. Harris",
-        "Charles E. Schumer",
-        "Kirsten E. Gillibrand",
-        "Nydia M. Velázquez",
-        "Kathleen C. Hochul",
-        "Antonio Delgado",
-        "Thomas P. DiNapoli",
-        "Letitia James",
-        "Julia Salazar",
-        "Erik Martin Dilan",
-        "Antonio Reynoso",
-        "Eric Gonzalez",
-        "Eric L. Adams",
-        "Jumaane D. Williams",
-        "Brad Lander",
-        "Sandy Nurse"
-      ],
+      "representatives": [],
+      "vote_log": {}
+    },
+    {
+      "id": "f26f1dfa-217e-41fe-a8c5-e38b765c8896",
+      "username": "aaa",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "aa",
+      "address": {
+        "street": "67 cooper st. apt. 1",
+        "city": "BROOKLYN",
+        "state": "NY",
+        "zipcode": "11207"
+      },
+      "representatives": [],
+      "vote_log": {}
+    },
+    {
+      "id": "4efb102f-2b82-42da-a30f-02d1d7f0603f",
+      "username": "ssss",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "ss",
+      "address": {
+        "street": "67 cooper st. apt. 1",
+        "city": "BROOKLYN",
+        "state": "NY",
+        "zipcode": "11207"
+      },
+      "representatives": [],
+      "vote_log": {}
+    },
+    {
+      "id": "ec22674f-08c2-4f0d-b918-4dec2cf3f5c9",
+      "username": "arf",
+      "email": "rosarioalexander3@gmail.com",
+      "password": "ff",
+      "address": {
+        "street": "67 cooper st. apt. 1",
+        "city": "BROOKLYN",
+        "state": "NY",
+        "zipcode": "11207"
+      },
+      "representatives": [],
       "vote_log": {
-        "H.RES.1213": {
+        "S.2291": {
           "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
-            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
-            "Nydia M. Velázquez": "No"
+            "arf": "Yes",
+            "Charles E. Schumer": "Yes inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "Yes inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
           },
           "PartyVotes": {
             "HouseVotes": {
-              "Democratic": {
-                "yes": 134,
-                "no": 61,
-                "present": 0,
-                "not_voting": 18,
-                "majority_position": "Yes"
-              },
-              "Republican": {
-                "yes": 203,
-                "no": 0,
-                "present": 0,
-                "not_voting": 14,
-                "majority_position": "Yes"
-              },
-              "Independent": {
-                "yes": 0,
-                "no": 0,
-                "present": 0,
-                "not_voting": 0
-              }
+              "House": "No Votes recorded yet."
             },
             "SenateVotes": {
               "Senate": "No Votes recorded yet."
             }
           }
         },
-        "S.546": {
+        "S.3237": {
           "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
-            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
+            "arf": "Yes",
+            "Charles E. Schumer": "Yes inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "Yes inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.R.7832": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.R.8666": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.RES.1280": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.R.3283": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.R.8652": {
+          "RepVotes": {
+            "arf": "No",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.RES.965": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "Yes inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.R.4581": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "Yes inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "Yes inferred from voting history, but no Vote Record found.",
             "Nydia M. Velázquez": "Yes"
           },
           "PartyVotes": {
             "HouseVotes": {
               "Democratic": {
-                "yes": 189,
-                "no": 6,
-                "present": 0,
-                "not_voting": 18,
-                "majority_position": "Yes"
-              },
-              "Republican": {
-                "yes": 181,
-                "no": 12,
-                "present": 0,
-                "not_voting": 24,
-                "majority_position": "Yes"
-              },
-              "Independent": {
-                "yes": 0,
-                "no": 0,
-                "present": 0,
-                "not_voting": 0
-              }
-            },
-            "SenateVotes": {
-              "Senate": "No Votes recorded yet."
-            }
-          }
-        },
-        "H.J.RES.109": {
-          "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "Yes",
-            "Kirsten E. Gillibrand": "Yes",
-            "Nydia M. Velázquez": "No"
-          },
-          "PartyVotes": {
-            "HouseVotes": {
-              "Democratic": {
-                "yes": 21,
-                "no": 182,
-                "present": 0,
-                "not_voting": 11,
-                "majority_position": "No"
-              },
-              "Republican": {
-                "yes": 207,
-                "no": 0,
-                "present": 0,
-                "not_voting": 9,
-                "majority_position": "Yes"
-              },
-              "Independent": {
-                "yes": 0,
-                "no": 0,
-                "present": 0,
-                "not_voting": 0
-              }
-            },
-            "SenateVotes": {
-              "Democratic": {
-                "yes": 11,
-                "no": 36,
-                "present": 0,
-                "not_voting": 1,
-                "majority_position": "No"
-              },
-              "Republican": {
-                "yes": 48,
-                "no": 0,
-                "present": 0,
-                "not_voting": 1,
-                "majority_position": "Yes"
-              },
-              "Independent": {
-                "yes": 1,
-                "no": 2,
-                "present": 0,
-                "not_voting": 0
-              }
-            }
-          }
-        },
-        "H.R.8369": {
-          "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
-            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
-            "Nydia M. Velázquez": "No"
-          },
-          "PartyVotes": {
-            "HouseVotes": {
-              "Democratic": {
-                "yes": 16,
-                "no": 184,
-                "present": 0,
-                "not_voting": 13,
-                "majority_position": "No"
-              },
-              "Republican": {
-                "yes": 208,
-                "no": 3,
-                "present": 0,
-                "not_voting": 6,
-                "majority_position": "Yes"
-              },
-              "Independent": {
-                "yes": 0,
-                "no": 0,
-                "present": 0,
-                "not_voting": 0
-              }
-            },
-            "SenateVotes": {
-              "Senate": "No Votes recorded yet."
-            }
-          }
-        },
-        "H.R.354": {
-          "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
-            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
-            "Nydia M. Velázquez": "No"
-          },
-          "PartyVotes": {
-            "HouseVotes": {
-              "Democratic": {
-                "yes": 16,
-                "no": 185,
-                "present": 0,
-                "not_voting": 12,
-                "majority_position": "No"
-              },
-              "Republican": {
-                "yes": 205,
+                "yes": 202,
                 "no": 0,
                 "present": 0,
                 "not_voting": 12,
                 "majority_position": "Yes"
               },
-              "Independent": {
-                "yes": 0,
-                "no": 0,
-                "present": 0,
-                "not_voting": 0
-              }
-            },
-            "SenateVotes": {
-              "Senate": "No Votes recorded yet."
-            }
-          }
-        },
-        "H.CON.RES.106": {
-          "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "House passed bill to Senate, it remains under consideration and subject to further action, debate, and potential modification.",
-            "Kirsten E. Gillibrand": "House passed bill to Senate, it remains under consideration and subject to further action, debate, and potential modification.",
-            "Nydia M. Velázquez": "House passed bill to Senate, it remains under consideration and subject to further action, debate, and potential modification."
-          },
-          "PartyVotes": {
-            "HouseVotes": {
-              "House": "No Votes recorded yet."
-            },
-            "SenateVotes": {
-              "Senate": "No Votes recorded yet."
-            }
-          }
-        },
-        "H.R.3019": {
-          "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "House passed bill to Senate, it remains under consideration and subject to further action, debate, and potential modification.",
-            "Kirsten E. Gillibrand": "House passed bill to Senate, it remains under consideration and subject to further action, debate, and potential modification.",
-            "Nydia M. Velázquez": "Not Voting"
-          },
-          "PartyVotes": {
-            "HouseVotes": {
-              "Democratic": {
-                "yes": 196,
-                "no": 0,
-                "present": 0,
-                "not_voting": 18,
-                "majority_position": "Yes"
-              },
               "Republican": {
-                "yes": 196,
-                "no": 2,
-                "present": 0,
-                "not_voting": 18,
-                "majority_position": "Yes"
-              },
-              "Independent": {
-                "yes": 0,
-                "no": 0,
-                "present": 0,
-                "not_voting": 0
-              }
-            },
-            "SenateVotes": {
-              "Senate": "No Votes recorded yet."
-            }
-          }
-        },
-        "H.R.3317": {
-          "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
-            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
-            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
-          },
-          "PartyVotes": {
-            "HouseVotes": {
-              "House": "No Votes recorded yet."
-            },
-            "SenateVotes": {
-              "Senate": "No Votes recorded yet."
-            }
-          }
-        },
-        "H.R.8495": {
-          "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
-            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
-            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
-          },
-          "PartyVotes": {
-            "HouseVotes": {
-              "House": "No Votes recorded yet."
-            },
-            "SenateVotes": {
-              "Senate": "No Votes recorded yet."
-            }
-          }
-        },
-        "H.R.4763": {
-          "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
-            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
-            "Nydia M. Velázquez": "Not Voting"
-          },
-          "PartyVotes": {
-            "HouseVotes": {
-              "Democratic": {
-                "yes": 71,
-                "no": 133,
-                "present": 0,
-                "not_voting": 9,
-                "majority_position": "No"
-              },
-              "Republican": {
-                "yes": 208,
+                "yes": 206,
                 "no": 3,
-                "present": 0,
-                "not_voting": 6,
-                "majority_position": "Yes"
-              },
-              "Independent": {
-                "yes": 0,
-                "no": 0,
-                "present": 0,
-                "not_voting": 0
-              }
-            },
-            "SenateVotes": {
-              "Senate": "No Votes recorded yet."
-            }
-          }
-        },
-        "H.R.5527": {
-          "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "Floor Vote, No Roll Call recorded.",
-            "Kirsten E. Gillibrand": "Floor Vote, No Roll Call recorded.",
-            "Nydia M. Velázquez": "Floor Vote, No Roll Call recorded."
-          },
-          "PartyVotes": {
-            "HouseVotes": {
-              "House": "No Votes recorded yet."
-            },
-            "SenateVotes": {
-              "Senate": "No Votes recorded yet."
-            }
-          }
-        },
-        "H.R.192": {
-          "RepVotes": {
-            "sko": "Yes",
-            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
-            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
-            "Nydia M. Velázquez": "Not Voting"
-          },
-          "PartyVotes": {
-            "HouseVotes": {
-              "Democratic": {
-                "yes": 52,
-                "no": 143,
-                "present": 0,
-                "not_voting": 18,
-                "majority_position": "No"
-              },
-              "Republican": {
-                "yes": 210,
-                "no": 0,
                 "present": 0,
                 "not_voting": 7,
                 "majority_position": "Yes"
@@ -458,25 +249,210 @@
             }
           }
         },
-        "H.R.5403": {
+        "H.RES.1292": {
           "RepVotes": {
-            "sko": "Yes",
+            "arf": "Yes",
             "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
             "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
-            "Nydia M. Velázquez": "Not Voting"
+            "Nydia M. Velázquez": "No"
           },
           "PartyVotes": {
             "HouseVotes": {
               "Democratic": {
-                "yes": 3,
-                "no": 192,
+                "yes": 0,
+                "no": 206,
                 "present": 0,
-                "not_voting": 18,
+                "not_voting": 7,
                 "majority_position": "No"
               },
               "Republican": {
-                "yes": 213,
+                "yes": 216,
+                "no": 1,
+                "present": 0,
+                "not_voting": 1,
+                "majority_position": "Yes"
+              },
+              "Independent": {
+                "yes": 0,
                 "no": 0,
+                "present": 0,
+                "not_voting": 0
+              }
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "S.2051": {
+          "RepVotes": {
+            "arf": "No",
+            "Charles E. Schumer": "Yes inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "Yes inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "Yes"
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "Democratic": {
+                "yes": 204,
+                "no": 0,
+                "present": 0,
+                "not_voting": 10,
+                "majority_position": "Yes"
+              },
+              "Republican": {
+                "yes": 202,
+                "no": 0,
+                "present": 0,
+                "not_voting": 15,
+                "majority_position": "Yes"
+              },
+              "Independent": {
+                "yes": 0,
+                "no": 0,
+                "present": 0,
+                "not_voting": 0
+              }
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.R.7989": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "Yes inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.CON.RES.113": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.R.1437": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.RES.1291": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "Yes inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "S.2908": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.RES.382": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "Yes"
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "Democratic": {
+                "yes": 210,
+                "no": 0,
+                "present": 0,
+                "not_voting": 3,
+                "majority_position": "Yes"
+              },
+              "Republican": {
+                "yes": 219,
+                "no": 0,
+                "present": 0,
+                "not_voting": 3,
+                "majority_position": "Yes"
+              },
+              "Independent": {
+                "yes": 0,
+                "no": 0,
+                "present": 0,
+                "not_voting": 0
+              }
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.R.8070": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No"
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "Democratic": {
+                "yes": 6,
+                "no": 196,
+                "present": 0,
+                "not_voting": 11,
+                "majority_position": "No"
+              },
+              "Republican": {
+                "yes": 211,
+                "no": 3,
                 "present": 0,
                 "not_voting": 4,
                 "majority_position": "Yes"
@@ -493,12 +469,79 @@
             }
           }
         },
-        "H.R.1097": {
+        "H.R.6543": {
           "RepVotes": {
-            "sko": "Yes",
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "Yes"
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "Democratic": {
+                "yes": 204,
+                "no": 0,
+                "present": 0,
+                "not_voting": 10,
+                "majority_position": "Yes"
+              },
+              "Republican": {
+                "yes": 180,
+                "no": 25,
+                "present": 0,
+                "not_voting": 12,
+                "majority_position": "Yes"
+              },
+              "Independent": {
+                "yes": 0,
+                "no": 0,
+                "present": 0,
+                "not_voting": 0
+              }
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.R.7988": {
+          "RepVotes": {
+            "arf": "Yes",
             "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
             "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
             "Nydia M. Velázquez": "Yes inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "S.3984": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "Yes inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "Yes inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
+          },
+          "PartyVotes": {
+            "HouseVotes": {
+              "House": "No Votes recorded yet."
+            },
+            "SenateVotes": {
+              "Senate": "No Votes recorded yet."
+            }
+          }
+        },
+        "H.RES.1302": {
+          "RepVotes": {
+            "arf": "Yes",
+            "Charles E. Schumer": "No inferred from voting history, but no Vote Record found.",
+            "Kirsten E. Gillibrand": "No inferred from voting history, but no Vote Record found.",
+            "Nydia M. Velázquez": "No inferred from voting history, but no Vote Record found."
           },
           "PartyVotes": {
             "HouseVotes": {
@@ -537,7 +580,8 @@
           "id": "potus"
         }
       ],
-      "id": "0ea50713-2829-42e2-9d8b-0ecc85c3bfb2"
+      "office_title": "President of the United States",
+      "id": "b727ac07-71b8-4726-bb95-6db03fcf420f"
     },
     {
       "name": "Kamala D. Harris",
@@ -563,7 +607,8 @@
           "id": "VP"
         }
       ],
-      "id": "41af422a-3227-47e3-a6ce-a83f7dbf89b1"
+      "office_title": "Vice President of the United States",
+      "id": "743541b0-740c-4de9-a94c-ba4fcbffc35e"
     },
     {
       "bioguideId": "S000148",
@@ -589,7 +634,7 @@
       },
       "updateDate": "2024-03-10T12:42:23Z",
       "url": "https://www.schumer.senate.gov",
-      "id": "33a761e3-7ccd-4f44-92f9-39d38d7be944",
+      "id": "81f82572-7f7b-45f8-8d91-75cf8789a00c",
       "title": "Senator, 3rd Class",
       "short_title": "Sen.",
       "api_uri": "https://api.propublica.org/congress/v1/members/S000148.json",
@@ -619,10 +664,10 @@
       "ideal_point": null,
       "seniority": "25",
       "next_election": "2028",
-      "total_votes": 523,
+      "total_votes": 542,
       "missed_votes": 3,
       "total_present": 0,
-      "last_updated": "2024-05-17 04:45:26 -0400",
+      "last_updated": "2024-06-05 17:30:30 -0400",
       "ocd_id": "ocd-division/country:us/state:ny",
       "office": null,
       "phone": null,
@@ -630,9 +675,9 @@
       "senate_class": "3",
       "state_rank": "senior",
       "lis_id": "S270",
-      "missed_votes_pct": 0.57,
-      "votes_with_party_pct": 98.46,
-      "votes_against_party_pct": 1.54,
+      "missed_votes_pct": 0.55,
+      "votes_with_party_pct": 98.32,
+      "votes_against_party_pct": 1.68,
       "address": [
         {
           "line1": "322 Hart Senate Office Building",
@@ -658,7 +703,8 @@
           "type": "Twitter",
           "id": "SenSchumer"
         }
-      ]
+      ],
+      "office_title": "U.S. Senator"
     },
     {
       "bioguideId": "G000555",
@@ -684,7 +730,7 @@
       },
       "updateDate": "2024-03-10T12:42:17Z",
       "url": "https://www.gillibrand.senate.gov",
-      "id": "0aa60ca8-d074-4066-90ca-ad558f059d54",
+      "id": "2dd9cbe5-bf65-4ba5-8102-e41b5cfa9785",
       "title": "Senator, 1st Class",
       "short_title": "Sen.",
       "api_uri": "https://api.propublica.org/congress/v1/members/G000555.json",
@@ -714,10 +760,10 @@
       "ideal_point": null,
       "seniority": "15",
       "next_election": "2024",
-      "total_votes": 523,
+      "total_votes": 542,
       "missed_votes": 8,
       "total_present": 0,
-      "last_updated": "2024-05-17 04:45:31 -0400",
+      "last_updated": "2024-06-05 17:30:30 -0400",
       "ocd_id": "ocd-division/country:us/state:ny",
       "office": "478 Russell Senate Office Building",
       "phone": "202-224-4451",
@@ -725,9 +771,9 @@
       "senate_class": "1",
       "state_rank": "junior",
       "lis_id": "S331",
-      "missed_votes_pct": 1.53,
-      "votes_with_party_pct": 99.61,
-      "votes_against_party_pct": 0.39,
+      "missed_votes_pct": 1.48,
+      "votes_with_party_pct": 99.62,
+      "votes_against_party_pct": 0.38,
       "address": [
         {
           "line1": "478 Russell Senate Office Building",
@@ -753,7 +799,8 @@
           "type": "Twitter",
           "id": "SenGillibrand"
         }
-      ]
+      ],
+      "office_title": "U.S. Senator"
     },
     {
       "bioguideId": "V000081",
@@ -775,7 +822,7 @@
       },
       "updateDate": "2024-02-27T13:20:56Z",
       "url": "https://velazquez.house.gov",
-      "id": "71f9cedb-106c-44a6-8458-4809d16ab8a6",
+      "id": "c32197ff-24e0-4afb-b9bc-f20d0b1b4c12",
       "title": "Representative",
       "short_title": "Rep.",
       "api_uri": "https://api.propublica.org/congress/v1/members/V000081.json",
@@ -805,19 +852,19 @@
       "ideal_point": null,
       "seniority": "32",
       "next_election": "2024",
-      "total_votes": 938,
-      "missed_votes": 16,
+      "total_votes": 967,
+      "missed_votes": 30,
       "total_present": 2,
-      "last_updated": "2024-05-17 15:00:13 -0400",
+      "last_updated": "2024-06-07 12:00:19 -0400",
       "ocd_id": "ocd-division/country:us/state:ny/cd:7",
       "office": "2302 Rayburn House Office Building",
       "phone": "202-225-2361",
       "fax": null,
       "at_large": false,
       "geoid": "3607",
-      "missed_votes_pct": 1.71,
-      "votes_with_party_pct": 93.2,
-      "votes_against_party_pct": 4.71,
+      "missed_votes_pct": 3.1,
+      "votes_with_party_pct": 93.31,
+      "votes_against_party_pct": 4.64,
       "address": [
         {
           "line1": "2302 Rayburn House Office Building",
@@ -843,7 +890,8 @@
           "type": "Twitter",
           "id": "NydiaVelazquez"
         }
-      ]
+      ],
+      "office_title": "U.S. Representative"
     },
     {
       "name": "Kathleen C. Hochul",
@@ -874,7 +922,8 @@
           "id": "GovKathyHochul"
         }
       ],
-      "id": "d9756c1a-958c-4d65-a74c-a41ac1e12435"
+      "office_title": "Governor of New York",
+      "id": "1abd8f68-710a-4464-b3d0-4bb3b86a7eae"
     },
     {
       "name": "Antonio Delgado",
@@ -904,40 +953,8 @@
           "id": "LtGovDelgado"
         }
       ],
-      "id": "c1f2fc37-1abf-4276-a019-38cfc8f9b8f3"
-    },
-    {
-      "name": "Thomas P. DiNapoli",
-      "address": [
-        {
-          "line1": "110 State Street",
-          "city": "Albany",
-          "state": "NY",
-          "zip": "12236"
-        }
-      ],
-      "party": "Democratic Party",
-      "phones": [
-        "(518) 474-4044"
-      ],
-      "urls": [
-        "https://www.osc.state.ny.us/",
-        "https://en.wikipedia.org/wiki/Thomas_DiNapoli"
-      ],
-      "emails": [
-        "contactus@osc.state.ny.us"
-      ],
-      "channels": [
-        {
-          "type": "Facebook",
-          "id": "nyscomptroller"
-        },
-        {
-          "type": "Twitter",
-          "id": "NYSComptroller"
-        }
-      ],
-      "id": "3a887f4f-42ca-4c8a-a3b3-2981579446b2"
+      "office_title": "Lieutenant Governor of New York",
+      "id": "2525918b-d673-469e-ac18-40bd1774d342"
     },
     {
       "name": "Letitia James",
@@ -970,7 +987,42 @@
           "id": "NewYorkStateAG"
         }
       ],
-      "id": "fd96c0a2-0193-4dfc-af30-e504e69e9a8b"
+      "office_title": "NY State Attorney General",
+      "id": "1a482d24-68d5-42db-a18e-1b2d6b6fad3e"
+    },
+    {
+      "name": "Thomas P. DiNapoli",
+      "address": [
+        {
+          "line1": "110 State Street",
+          "city": "Albany",
+          "state": "NY",
+          "zip": "12236"
+        }
+      ],
+      "party": "Democratic Party",
+      "phones": [
+        "(518) 474-4044"
+      ],
+      "urls": [
+        "https://www.osc.state.ny.us/",
+        "https://en.wikipedia.org/wiki/Thomas_DiNapoli"
+      ],
+      "emails": [
+        "contactus@osc.state.ny.us"
+      ],
+      "channels": [
+        {
+          "type": "Facebook",
+          "id": "nyscomptroller"
+        },
+        {
+          "type": "Twitter",
+          "id": "NYSComptroller"
+        }
+      ],
+      "office_title": "NY State Comptroller",
+      "id": "8721db3b-83fe-4b82-9b2d-d5a7fd96bdaf"
     },
     {
       "name": "Julia Salazar",
@@ -1003,7 +1055,199 @@
           "id": "SalazarSenate"
         }
       ],
-      "id": "ec5c8ee1-df56-4c87-883e-3ba2f2b3d4fb"
+      "office_title": "NY State Senator",
+      "id": "141d737b-8aa8-4983-801e-40822e93aed1"
+    },
+    {
+      "name": "Maritza Davila",
+      "address": [
+        {
+          "line1": "198 State Street",
+          "city": "Albany",
+          "state": "NY",
+          "zip": "12248"
+        }
+      ],
+      "party": "Democratic Party",
+      "phones": [
+        "(518) 455-5537"
+      ],
+      "urls": [
+        "https://nyassembly.gov/mem/Maritza-Davila",
+        "https://en.wikipedia.org/wiki/Maritza_Davila"
+      ],
+      "photoUrl": "http://assembly.state.ny.us/mem/pic/053.jpg",
+      "emails": [
+        "davilam@nyassembly.gov"
+      ],
+      "channels": [
+        {
+          "type": "Facebook",
+          "id": "MaritzaDavilaAssembly"
+        },
+        {
+          "type": "Twitter",
+          "id": "DavilaAssembly"
+        }
+      ],
+      "office_title": "NY State Assembly Member",
+      "id": "3ec4df2c-cbf9-4e34-b2ce-ae1d0ecfcc4e"
+    },
+    {
+      "name": "Antonio Reynoso",
+      "address": [
+        {
+          "line1": "209 Joralemon Street",
+          "city": "Brooklyn",
+          "state": "NY",
+          "zip": "11201"
+        }
+      ],
+      "party": "Democratic Party",
+      "phones": [
+        "(718) 802-3700"
+      ],
+      "urls": [
+        "https://www.brooklyn-usa.org/",
+        "https://en.wikipedia.org/wiki/Antonio_Reynoso"
+      ],
+      "emails": [
+        "askreynoso@brooklynbp.nyc.gov"
+      ],
+      "channels": [
+        {
+          "type": "Facebook",
+          "id": "BKBPReynoso"
+        },
+        {
+          "type": "Twitter",
+          "id": "BKBPReynoso"
+        }
+      ],
+      "office_title": "Brooklyn Borough President",
+      "id": "c41c2467-6dea-40e0-be23-00beb59aaed5"
+    },
+    {
+      "name": "Eric Gonzalez",
+      "address": [
+        {
+          "line1": "350 Jay Street",
+          "city": "Brooklyn",
+          "state": "NY",
+          "zip": "11201"
+        }
+      ],
+      "party": "Democratic Party",
+      "phones": [
+        "(718) 250-2340"
+      ],
+      "urls": [
+        "http://www.brooklynda.org/",
+        "https://en.wikipedia.org/wiki/Eric_Gonzalez_%28lawyer%29"
+      ],
+      "channels": [
+        {
+          "type": "Facebook",
+          "id": "BrooklynDA"
+        },
+        {
+          "type": "Twitter",
+          "id": "BrooklynDA"
+        }
+      ],
+      "office_title": "Brooklyn District Attorney",
+      "id": "6f499c20-4b5c-47be-8ff8-856faac1c5ba"
+    },
+    {
+      "name": "Eric L. Adams",
+      "party": "Democratic Party",
+      "phones": [
+        "(212) 639-9675"
+      ],
+      "urls": [
+        "https://www1.nyc.gov/office-of-the-mayor/index.page",
+        "https://en.wikipedia.org/wiki/Eric_Adams"
+      ],
+      "channels": [
+        {
+          "type": "Facebook",
+          "id": "NYCMayor"
+        },
+        {
+          "type": "Twitter",
+          "id": "NYCMayor"
+        }
+      ],
+      "office_title": "Mayor of New York",
+      "id": "f2a55304-ad2a-4a4c-9cbf-77d3bc7a0c34"
+    },
+    {
+      "name": "Brad Lander",
+      "address": [
+        {
+          "line1": "1 Centre Street",
+          "city": "New York",
+          "state": "NY",
+          "zip": "10007"
+        }
+      ],
+      "party": "Democratic Party",
+      "phones": [
+        "(212) 669-3916"
+      ],
+      "urls": [
+        "https://comptroller.nyc.gov/",
+        "https://en.wikipedia.org/wiki/Brad_Lander"
+      ],
+      "emails": [
+        "action@comptroller.nyc.gov"
+      ],
+      "channels": [
+        {
+          "type": "Facebook",
+          "id": "ComptrollerNYC"
+        },
+        {
+          "type": "Twitter",
+          "id": "NYCComptroller"
+        }
+      ],
+      "office_title": "New York City Comptroller",
+      "id": "1e2b1681-fdd8-47e7-b79d-767ce9b4d9ca"
+    },
+    {
+      "name": "Jumaane D. Williams",
+      "address": [
+        {
+          "line1": "1 Centre Street",
+          "city": "New York",
+          "state": "NY",
+          "zip": "10007"
+        }
+      ],
+      "party": "Democratic Party",
+      "phones": [
+        "(212) 669-7250"
+      ],
+      "urls": [
+        "https://www.pubadvocate.nyc.gov/",
+        "https://en.wikipedia.org/wiki/Jumaane_Williams"
+      ],
+      "emails": [
+        "reception@advocate.nyc.gov"
+      ],
+      "channels": [
+        {
+          "type": "Facebook",
+          "id": "NYCPublicAdvocate"
+        },
+        {
+          "type": "Twitter",
+          "id": "nycpa"
+        }
+      ],
+      "office_title": "New York Public Advocate",
+      "id": "f691c819-56ba-47bf-ba4b-27093012cb0a"
     },
     {
       "name": "Erik Martin Dilan",
@@ -1037,158 +1281,8 @@
           "id": "edilan37"
         }
       ],
-      "id": "16d54a0e-f712-4310-a401-da45f2b7bc13"
-    },
-    {
-      "name": "Antonio Reynoso",
-      "address": [
-        {
-          "line1": "209 Joralemon Street",
-          "city": "Brooklyn",
-          "state": "NY",
-          "zip": "11201"
-        }
-      ],
-      "party": "Democratic Party",
-      "phones": [
-        "(718) 802-3700"
-      ],
-      "urls": [
-        "https://www.brooklyn-usa.org/",
-        "https://en.wikipedia.org/wiki/Antonio_Reynoso"
-      ],
-      "emails": [
-        "askreynoso@brooklynbp.nyc.gov"
-      ],
-      "channels": [
-        {
-          "type": "Facebook",
-          "id": "BKBPReynoso"
-        },
-        {
-          "type": "Twitter",
-          "id": "BKBPReynoso"
-        }
-      ],
-      "id": "19c14983-f2ad-45b2-8e2a-3a7c8343103e"
-    },
-    {
-      "name": "Eric Gonzalez",
-      "address": [
-        {
-          "line1": "350 Jay Street",
-          "city": "Brooklyn",
-          "state": "NY",
-          "zip": "11201"
-        }
-      ],
-      "party": "Democratic Party",
-      "phones": [
-        "(718) 250-2340"
-      ],
-      "urls": [
-        "http://www.brooklynda.org/",
-        "https://en.wikipedia.org/wiki/Eric_Gonzalez_%28lawyer%29"
-      ],
-      "channels": [
-        {
-          "type": "Facebook",
-          "id": "BrooklynDA"
-        },
-        {
-          "type": "Twitter",
-          "id": "BrooklynDA"
-        }
-      ],
-      "id": "ce43bc51-ff27-418f-b533-730678a791f8"
-    },
-    {
-      "name": "Eric L. Adams",
-      "party": "Democratic Party",
-      "phones": [
-        "(212) 639-9675"
-      ],
-      "urls": [
-        "https://www1.nyc.gov/office-of-the-mayor/index.page",
-        "https://en.wikipedia.org/wiki/Eric_Adams"
-      ],
-      "channels": [
-        {
-          "type": "Facebook",
-          "id": "NYCMayor"
-        },
-        {
-          "type": "Twitter",
-          "id": "NYCMayor"
-        }
-      ],
-      "id": "930bbe7c-0ec5-4598-8912-62d0211ce3e8"
-    },
-    {
-      "name": "Jumaane D. Williams",
-      "address": [
-        {
-          "line1": "1 Centre Street",
-          "city": "New York",
-          "state": "NY",
-          "zip": "10007"
-        }
-      ],
-      "party": "Democratic Party",
-      "phones": [
-        "(212) 669-7250"
-      ],
-      "urls": [
-        "https://www.pubadvocate.nyc.gov/",
-        "https://en.wikipedia.org/wiki/Jumaane_Williams"
-      ],
-      "emails": [
-        "reception@advocate.nyc.gov"
-      ],
-      "channels": [
-        {
-          "type": "Facebook",
-          "id": "NYCPublicAdvocate"
-        },
-        {
-          "type": "Twitter",
-          "id": "nycpa"
-        }
-      ],
-      "id": "4b676390-86e5-4cbf-8f71-f5e645f7f750"
-    },
-    {
-      "name": "Brad Lander",
-      "address": [
-        {
-          "line1": "1 Centre Street",
-          "city": "New York",
-          "state": "NY",
-          "zip": "10007"
-        }
-      ],
-      "party": "Democratic Party",
-      "phones": [
-        "(212) 669-3916"
-      ],
-      "urls": [
-        "https://comptroller.nyc.gov/",
-        "https://en.wikipedia.org/wiki/Brad_Lander"
-      ],
-      "emails": [
-        "action@comptroller.nyc.gov"
-      ],
-      "channels": [
-        {
-          "type": "Facebook",
-          "id": "ComptrollerNYC"
-        },
-        {
-          "type": "Twitter",
-          "id": "NYCComptroller"
-        }
-      ],
-      "id": "e4e8fba6-0559-41df-86aa-e65a5a5c07cc"
+      "office_title": "NY State Assembly Member",
+      "id": "d4bf5556-ec5c-4c85-adbf-8f8e4825d379"
     },
     {
       "name": "Sandy Nurse",
@@ -1217,7 +1311,48 @@
           "id": "CMSandyNurse"
         }
       ],
-      "id": "da5dc49d-a210-4740-987e-c9af56733ffd"
+      "office_title": "New York City Council Member",
+      "id": "0fe73c74-a74b-477a-8fdf-7b1f3709ec76"
+    },
+    {
+      "0": "Joseph R. Biden",
+      "1": "Kamala D. Harris",
+      "2": "Charles E. Schumer",
+      "3": "Kirsten E. Gillibrand",
+      "4": "Nydia M. Velázquez",
+      "5": "Kathleen C. Hochul",
+      "6": "Antonio Delgado",
+      "7": "Thomas P. DiNapoli",
+      "8": "Letitia James",
+      "9": "Julia Salazar",
+      "10": "Erik Martin Dilan",
+      "11": "Antonio Reynoso",
+      "12": "Eric Gonzalez",
+      "13": "Eric L. Adams",
+      "14": "Jumaane D. Williams",
+      "15": "Brad Lander",
+      "16": "Sandy Nurse",
+      "id": "62b86329-f4c4-4606-aec3-f9e5f2016616"
+    },
+    {
+      "0": "Joseph R. Biden",
+      "1": "Kamala D. Harris",
+      "2": "Charles E. Schumer",
+      "3": "Kirsten E. Gillibrand",
+      "4": "Nydia M. Velázquez",
+      "5": "Kathleen C. Hochul",
+      "6": "Antonio Delgado",
+      "7": "Thomas P. DiNapoli",
+      "8": "Letitia James",
+      "9": "Julia Salazar",
+      "10": "Erik Martin Dilan",
+      "11": "Antonio Reynoso",
+      "12": "Eric Gonzalez",
+      "13": "Eric L. Adams",
+      "14": "Jumaane D. Williams",
+      "15": "Brad Lander",
+      "16": "Sandy Nurse",
+      "id": "4b93a46e-6018-412b-a8c2-0b578bf8cdef"
     }
   ]
 }

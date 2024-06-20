@@ -38,6 +38,8 @@ export interface HouseBill {
 	vetoed: null | string;
 }
 export type User = {
+	id: string;
+	vote_log: object;
 	username: string;
 	email: string;
 	password: string;
@@ -128,6 +130,9 @@ export interface CongressMember {
 	channels: string[];
 	depiction: string[];
 	votes_with_party_pct?: number;
+	office_title: string;
+	office: string;
+	title: { name: string };
 }
 
 export interface RelevantVote {

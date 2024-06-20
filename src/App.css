@@ -249,12 +249,11 @@
 .rep-card {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	width: fit-content;
 	flex-grow: 1;
 	width: 35%;
 	max-width: 35%;
-	overflow: hidden;
+
 	height: 75%;
 	border-radius: 8px;
 	padding: 2%;
@@ -265,16 +264,33 @@
 	background-color: var(--offwhite);
 }
 
-.rep-card h3 {
-	color: var(--offblack);
-	font: Barlow, sans-serif;
-	font-size: var(--size-30);
-}
-
-.rep-score {
+.rep-card-top {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	align-items: center;
+}
+
+.name-title {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	justify-items: center;
+}
+.name-title h3 {
+	color: var(--offblack);
+	font-family: 'Barlow', sans-serif;
+	font-size: var(--size-30);
+	margin: 0;
+}
+
+.name-title h5 {
+	margin: 0 0 10px 0;
+}
+.rep-score {
+	display: flex;
+	flex-direction: row;
+	justify-items: space-between;
 	align-items: center;
 }
 
@@ -283,19 +299,19 @@
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	justify-items: space-between;
+	width: 100%;
 }
 
 .rep-card-bottom img {
 	width: 30%;
-	padding: 0 5%;
 }
 
 .rep-info {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-
-	margin-left: -20px;
+	overflow: scroll;
+	padding: 0 10%;
 }
 
 .rep-card a {
@@ -389,9 +405,7 @@
 	align-items: center;
 	margin: 20px auto;
 }
-.font-face-Barlow {
-	font-family: 'Barlow', sans-serif;
-}
+
 .carousel-root {
 	display: flex;
 	justify-content: space-around;
